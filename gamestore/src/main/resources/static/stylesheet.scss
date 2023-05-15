@@ -1,0 +1,1271 @@
+//Mixin for the footter
+@mixin respond($breakpoint) {
+  @if $breakpoint == tab-port {
+    //900px /16= 56.25
+    @media only screen and (max-width: 56.25em) {
+      @content;
+    }
+  }
+}
+
+// COLORS for page
+
+$primary-color: #1c3a63;
+$secondary-color: #ff5733;
+$text-color: #faf0e6;
+$accent-color: #61b3ff;
+$sticky-bg-color: #2c4a7d; // New color for the sticky navigation background
+
+/*  Style of entire app */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient($primary-color, $secondary-color);
+}
+
+/* Header Nav part */
+
+header {
+  //We add psoition sticky and background color in order to make sticky navigation
+  position: sticky;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100000;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+header .logo {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header ul li {
+  list-style: none;
+  margin-left: 20px;
+
+  &:first-child {
+    margin-left: 0;
+  }
+}
+
+header ul li a {
+  text-decoration: none;
+  padding: 6px 15px;
+  color: #fff;
+  border-radius: 20px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-weight: 600; /* Adjust as needed */
+  text-transform: uppercase; /* If you want all links uppercase */
+}
+
+header ul li a:hover,
+header ul li a.active {
+  background: #fff;
+  color: black;
+}
+
+// Menu sliding from the left side of the Website
+
+.close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5em;
+  background: transparent;
+  border: none;
+  color: $secondary-color;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.close-btn:hover {
+  color: $accent-color;
+}
+
+.menu-btn {
+  background: $secondary-color;
+  border: none;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  border-radius: 50px;
+  transition: background-color 0.3s ease-in-out;
+  margin-left: 20px;
+}
+
+.menu-btn:hover {
+  background-color: $accent-color;
+}
+
+.sliding-menu {
+  position: fixed;
+  top: 0;
+  left: -300px; // The menu is initially hidden on the left side
+  width: 300px;
+  height: 100%;
+  background: $primary-color;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  z-index: 99999;
+  transition: left 0.3s ease-in-out; // The transition is now applied to the left property
+  box-shadow: 10px 0 20px rgba(0, 0, 0, 0.2); // The shadow is now on the right side
+}
+
+.sliding-menu.active {
+  left: 0; // The menu slides to the left edge of the screen when active
+}
+
+.sliding-menu ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: $text-color;
+}
+
+.sliding-menu ul li {
+  margin-bottom: 20px;
+}
+
+.sliding-menu ul li a {
+  color: $secondary-color;
+  font-size: 1.2em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.3s ease-in-out;
+}
+
+.sliding-menu ul li a:hover {
+  color: $accent-color;
+}
+
+.sliding-menu.active {
+  right: 0;
+}
+
+//In order for our sticky navigation to get background color when moved:
+header.scrolled {
+  background-color: rgba($sticky-bg-color, 0.5);
+}
+
+//Search bar of the navigation
+
+.search-form {
+  margin-left: 30px;
+  margin-right: 10px;
+}
+
+.search-input {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border-radius: 25px;
+  width: 300px; //defaultt length of search bar of 300px
+  transition: width 0.5s ease-in-out; /* Add a transition for the width property */
+}
+
+.search-input:focus {
+  width: 600px;
+  outline: none; /* Optional: remove the default browser outline */
+}
+
+//Now After finishing the header of the website
+//We need to create a container style in order for  each section be positioned correctly in the page
+
+//In order to make predetermined size of the section for each section in this page we are going tto create  a standard sttyle for each section in the website.
+.container {
+  width: 100%;
+  max-width: 1700px; /* Increase max-width for larger screens */
+  margin: 50px auto;
+  padding: 50px 20px;
+}
+
+/* Add media queries for responsiveness */
+@media screen and (max-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .container {
+    padding: 50px 10px; /* Adjust padding for smaller screens */
+  }
+}
+
+//GALLERY
+
+.gallery {
+  grid-column: full-start / full-end;
+
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  //We use vw (viewport width) in order for the grid height to not change when the viewport shrinks
+  grid-template-rows: repeat(11, 5vw);
+
+  grid-gap: 1.5rem;
+  padding: 1.5rem;
+
+  &__item {
+    &--1 {
+      grid-row: 1 / 5;
+      grid-column: 1 / 5;
+    }
+
+    &--2 {
+      grid-row: 1 / 5;
+      grid-column: 5 / 9;
+    }
+    &--3 {
+      grid-row: 5 / 8;
+      grid-column: 1 / 9;
+    }
+    &--4 {
+      grid-row: 8 / 12;
+      grid-column: 1 / 5;
+    }
+    &--5 {
+      grid-row: 8 / 12;
+      grid-column: 5 / 9;
+    }
+  }
+
+  &__img {
+    //we put 100% for the width of the images in order for the images dont ocuppy the whole grid and only a grid cell.
+    width: 100%;
+    height: 100%;
+    // object fit is in order for the image not to overflow, but for object fit to work we have to manually se the width and height of the image
+    object-fit: cover;
+
+    display: block;
+  }
+}
+
+// Top Brands
+
+.top-brands {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.top-brands__title {
+  font-size: 2em;
+  color: $text-color;
+  margin-bottom: 30px;
+}
+
+.top-brands__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+}
+
+.brand-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 20px;
+  border-radius: 5px;
+  transition: all 0.3s;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+}
+
+.brand-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+// Ad Section
+.ad-section {
+  width: 100%;
+  height: auto;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
+  .ad-banner {
+    position: relative;
+  }
+
+  .ad-image {
+    width: 100%;
+    height: auto;
+    max-height: 250px;
+    object-fit: cover;
+  }
+
+  .ad-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+
+    h3 {
+      font-size: 2.5em;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.5em;
+    }
+  }
+}
+
+// Carousel
+.carousel-section {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.swiper-container {
+  width: 100%;
+  height: 700px; // Set the desired height for the carousel
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; // Ensure the image doesn't overflow the slide
+
+  img {
+    // Let's use absolute positioning to make the images fill the slides
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    object-position: center;
+  }
+}
+
+//Featured Categories
+.featured-categories {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.featured-categories__title {
+  font-size: 2em;
+  color: $text-color;
+  margin-bottom: 30px;
+}
+
+.featured-categories__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+}
+
+.category-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  padding: 20px;
+  border-radius: 5px;
+  transition: all 0.3s;
+  width: 500px; // Set the desired width
+  height: 250px; // Set the desired height
+  overflow: hidden;
+  position: relative;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .category-name {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(
+      0,
+      0,
+      0,
+      0.5
+    ); // Adjust background color and opacity as needed
+    color: #fff; // Adjust text color as needed
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+}
+
+.category-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  .category-name {
+    opacity: 1;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .featured-categories__grid {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+}
+
+//Footer
+
+.footer {
+  background-color: black;
+  padding: 10rem 0;
+  font-size: 1.4rem;
+  color: $text-color;
+
+  @include respond(tab-port) {
+    padding: 8rem 0;
+  }
+
+  &__logo-box {
+    //inline image works as inline text, so text align center will align the image
+    text-align: center;
+    margin-bottom: 8rem;
+
+    @include respond(tab-port) {
+      margin-bottom: 6rem;
+    }
+  }
+
+  &__logo {
+    width: 15rem;
+    height: auto;
+  }
+
+  &__navigation {
+    border-top: 1px solid $text-color;
+    padding-top: 2rem;
+    // inline-block dosent ocuppy 100% of its available width only what the content needs
+    display: inline-block;
+
+    @include respond(tab-port) {
+      width: 100%;
+      text-align: center;
+    }
+  }
+
+  &__list {
+    list-style: none;
+  }
+
+  &__item {
+    display: inline-block;
+
+    &:not(:last-child) {
+      margin-right: 1.5rem;
+    }
+  }
+
+  &__link {
+    &:link,
+    &:visited {
+      color: black;
+      background-color: $secondary-color;
+      text-decoration: none;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    &:hover,
+    &:active {
+      color: $primary-color;
+      box-shadow: 0 1rem 2rem rgba(black, 0.4);
+      transform: rotate(5deg) scale(1.3);
+    }
+  }
+
+  &__copyright {
+    border-top: 1px solid $primary-color;
+    padding-top: 2rem;
+    width: 80%;
+    float: right;
+
+    @include respond(tab-port) {
+      width: 100%;
+      float: none;
+    }
+  }
+}
+
+//Media queries for screen sizes
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 0.8em; /* Adjust this value as needed */
+  }
+
+  /* Header Nav part */
+  header {
+    justify-content: center;
+  }
+
+  header .logo {
+    font-size: 1em;
+  }
+
+  header .logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  header ul li a {
+    text-decoration: none;
+    padding: 3px 7px; /* Adjusted the padding */
+    color: #fff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  // Menu sliding from the left side of the Website
+  .close-btn {
+    font-size: 4em;
+  }
+
+  .menu-btn {
+    padding: 10px 10px;
+    font-size: 1em;
+
+    margin-left: 5px;
+  }
+
+  //Search bar of the navigation
+
+  .search-form {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .search-input {
+    padding: 3px 10px;
+    font-size: 1em;
+    width: 150px; //defaultt length of search bar of 300px
+  }
+  .search-input:focus {
+    width: 200px;
+    outline: none; /* Optional: remove the default browser outline */
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  body {
+    font-size: 0.85em;
+  }
+
+  /* Header Nav part */
+  header {
+    justify-content: center;
+  }
+
+  header .logo {
+    font-size: 1em;
+  }
+
+  header .logo img {
+    width: 50px;
+    height: 50px;
+  }
+
+  header ul li a {
+    text-decoration: none;
+    padding: 3px 7px; /* Adjusted the padding */
+    color: #fff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  // Menu sliding from the left side of the Website
+  .close-btn {
+    font-size: 4em;
+  }
+
+  .menu-btn {
+    padding: 10px 10px;
+    font-size: 1em;
+
+    margin-left: 5px;
+  }
+
+  //Search bar of the navigation
+
+  .search-form {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+
+  .search-input {
+    padding: 3px 10px;
+    font-size: 1em;
+    width: 150px; //defaultt length of search bar of 300px
+  }
+  .search-input:focus {
+    width: 250px;
+    outline: none; /* Optional: remove the default browser outline */
+  }
+
+  //Featured Categories
+
+  .featured-categories__grid {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .category-box {
+    flex-direction: column;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 0.9em;
+  }
+
+  header ul li {
+    list-style: none;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  body {
+    font-size: 1em;
+  }
+  .category-box {
+    width: 600px; // increase this value to make the boxes wider
+    height: 400px;
+  }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  /*  Style of entire app */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: linear-gradient($primary-color, $secondary-color);
+  }
+
+  /* Header Nav part */
+
+  header {
+    //We add psoition sticky and background color in order to make sticky navigation
+    position: sticky;
+
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 30px 100px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100000;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+  }
+
+  header .logo {
+    color: #fff;
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+  }
+
+  header .logo img {
+    width: 100px;
+    height: 100px;
+    margin-right: 10px;
+  }
+
+  header ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  header ul li {
+    list-style: none;
+    margin-left: 20px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+
+  header ul li a {
+    text-decoration: none;
+    padding: 6px 15px;
+    color: #fff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600; /* Adjust as needed */
+    text-transform: uppercase; /* If you want all links uppercase */
+  }
+
+  header ul li a:hover,
+  header ul li a.active {
+    background: #fff;
+    color: black;
+  }
+
+  // Menu sliding from the left side of the Website
+
+  .close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5em;
+    background: transparent;
+    border: none;
+    color: $secondary-color;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .close-btn:hover {
+    color: $accent-color;
+  }
+
+  .menu-btn {
+    background: $secondary-color;
+    border: none;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s ease-in-out;
+    margin-left: 20px;
+  }
+
+  .menu-btn:hover {
+    background-color: $accent-color;
+  }
+
+  .sliding-menu {
+    position: fixed;
+    top: 0;
+    left: -300px; // The menu is initially hidden on the left side
+    width: 300px;
+    height: 100%;
+    background: $primary-color;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 99999;
+    transition: left 0.3s ease-in-out; // The transition is now applied to the left property
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.2); // The shadow is now on the right side
+  }
+
+  .sliding-menu.active {
+    left: 0; // The menu slides to the left edge of the screen when active
+  }
+
+  .sliding-menu ul {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: $text-color;
+  }
+
+  .sliding-menu ul li {
+    margin-bottom: 20px;
+  }
+
+  .sliding-menu ul li a {
+    color: $secondary-color;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .sliding-menu ul li a:hover {
+    color: $accent-color;
+  }
+
+  .sliding-menu.active {
+    right: 0;
+  }
+
+  //In order for our sticky navigation to get background color when moved:
+  header.scrolled {
+    background-color: rgba($sticky-bg-color, 0.5);
+  }
+
+  //Search bar of the navigation
+
+  .search-form {
+    margin-left: 30px;
+    margin-right: 10px;
+  }
+
+  .search-input {
+    padding: 10px 20px;
+    font-size: 1.2em;
+    border-radius: 25px;
+    width: 300px; //defaultt length of search bar of 300px
+    transition: width 0.5s ease-in-out; /* Add a transition for the width property */
+  }
+
+  .search-input:focus {
+    width: 600px;
+    outline: none; /* Optional: remove the default browser outline */
+  }
+
+  //Now After finishing the header of the website
+  //We need to create a container style in order for  each section be positioned correctly in the page
+
+  //In order to make predetermined size of the section for each section in this page we are going tto create  a standard sttyle for each section in the website.
+  .container {
+    width: 100%;
+    max-width: 1700px; /* Increase max-width for larger screens */
+    margin: 50px auto;
+    padding: 50px 20px;
+  }
+
+  /* Add media queries for responsiveness */
+  @media screen and (max-width: 1400px) {
+    .container {
+      max-width: 1200px;
+    }
+  }
+
+  @media screen and (max-width: 1200px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+
+  @media screen and (max-width: 960px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    .container {
+      max-width: 540px;
+    }
+  }
+
+  @media screen and (max-width: 540px) {
+    .container {
+      padding: 50px 10px; /* Adjust padding for smaller screens */
+    }
+  }
+
+  //GALLERY
+
+  .gallery {
+    grid-column: full-start / full-end;
+
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    //We use vw (viewport width) in order for the grid height to not change when the viewport shrinks
+    grid-template-rows: repeat(11, 5vw);
+
+    grid-gap: 1.5rem;
+    padding: 1.5rem;
+
+    &__item {
+      &--1 {
+        grid-row: 1 / 5;
+        grid-column: 1 / 5;
+      }
+
+      &--2 {
+        grid-row: 1 / 5;
+        grid-column: 5 / 9;
+      }
+      &--3 {
+        grid-row: 5 / 8;
+        grid-column: 1 / 9;
+      }
+      &--4 {
+        grid-row: 8 / 12;
+        grid-column: 1 / 5;
+      }
+      &--5 {
+        grid-row: 8 / 12;
+        grid-column: 5 / 9;
+      }
+    }
+
+    &__img {
+      //we put 100% for the width of the images in order for the images dont ocuppy the whole grid and only a grid cell.
+      width: 100%;
+      height: 100%;
+      // object fit is in order for the image not to overflow, but for object fit to work we have to manually se the width and height of the image
+      object-fit: cover;
+
+      display: block;
+    }
+  }
+
+  // Top Brands
+
+  .top-brands {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .top-brands__title {
+    font-size: 2em;
+    color: $text-color;
+    margin-bottom: 30px;
+  }
+
+  .top-brands__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+  }
+
+  .brand-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 20px;
+    border-radius: 5px;
+    transition: all 0.3s;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  .brand-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  // Ad Section
+  .ad-section {
+    width: 100%;
+    height: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+    .ad-banner {
+      position: relative;
+    }
+
+    .ad-image {
+      width: 100%;
+      height: auto;
+      max-height: 250px;
+      object-fit: cover;
+    }
+
+    .ad-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: #fff;
+
+      h3 {
+        font-size: 2.5em;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+
+      p {
+        font-size: 1.5em;
+      }
+    }
+  }
+
+  // Carousel
+  .carousel-section {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+
+  .swiper-container {
+    width: 100%;
+    height: 700px; // Set the desired height for the carousel
+  }
+
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; // Ensure the image doesn't overflow the slide
+
+    img {
+      // Let's use absolute positioning to make the images fill the slides
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  //Featured Categories
+  .featured-categories {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .featured-categories__title {
+    font-size: 2em;
+    color: $text-color;
+    margin-bottom: 30px;
+  }
+
+  .featured-categories__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 20px;
+  }
+
+  .category-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    padding: 20px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    width: 500px; // Set the desired width
+    height: 250px; // Set the desired height
+    overflow: hidden;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .category-name {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(
+        0,
+        0,
+        0,
+        0.5
+      ); // Adjust background color and opacity as needed
+      color: #fff; // Adjust text color as needed
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+
+  .category-box:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    .category-name {
+      opacity: 1;
+    }
+  }
+
+  @media screen and (max-width: 720px) {
+    .featured-categories__grid {
+      grid-template-columns: 1fr;
+      grid-gap: 20px;
+    }
+  }
+
+  //Footer
+
+  .footer {
+    background-color: black;
+    padding: 10rem 0;
+    font-size: 1.4rem;
+    color: $text-color;
+
+    @include respond(tab-port) {
+      padding: 8rem 0;
+    }
+
+    &__logo-box {
+      //inline image works as inline text, so text align center will align the image
+      text-align: center;
+      margin-bottom: 8rem;
+
+      @include respond(tab-port) {
+        margin-bottom: 6rem;
+      }
+    }
+
+    &__logo {
+      width: 15rem;
+      height: auto;
+    }
+
+    &__navigation {
+      border-top: 1px solid $text-color;
+      padding-top: 2rem;
+      // inline-block dosent ocuppy 100% of its available width only what the content needs
+      display: inline-block;
+
+      @include respond(tab-port) {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    &__list {
+      list-style: none;
+    }
+
+    &__item {
+      display: inline-block;
+
+      &:not(:last-child) {
+        margin-right: 1.5rem;
+      }
+    }
+
+    &__link {
+      &:link,
+      &:visited {
+        color: black;
+        background-color: $secondary-color;
+        text-decoration: none;
+        text-transform: uppercase;
+        display: inline-block;
+        transition: all 0.2s;
+      }
+
+      &:hover,
+      &:active {
+        color: $primary-color;
+        box-shadow: 0 1rem 2rem rgba(black, 0.4);
+        transform: rotate(5deg) scale(1.3);
+      }
+    }
+
+    &__copyright {
+      border-top: 1px solid $primary-color;
+      padding-top: 2rem;
+      width: 80%;
+      float: right;
+
+      @include respond(tab-port) {
+        width: 100%;
+        float: none;
+      }
+    }
+  }
+}
