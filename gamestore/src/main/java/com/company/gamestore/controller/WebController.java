@@ -29,6 +29,11 @@ public class WebController {
         return "search";
     }
 
+    @GetMapping("/admin")
+    public String returnAdmin(){
+        return "ADMIN";
+    }
+
     @GetMapping("/createGame")
     public String returnCreateGame(){
         return "createGame";
@@ -40,6 +45,8 @@ public class WebController {
         System.out.println("Game from UI =" + game);
 
         serviceLayer.saveGame(game);
+
+
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("game_information");
