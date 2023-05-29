@@ -42,6 +42,16 @@ public class WebController {
         return "createGame";
     }
 
+    @GetMapping("/createConsole")
+    public String returnCreateConsole(){
+        return "createConsole";
+    }
+
+    @GetMapping("/createTshirt")
+    public String returnCreateTshirt(){
+        return "createT-shirt";
+    }
+
 
     @GetMapping("/searchGames")
     public String returnSearch(Model model){

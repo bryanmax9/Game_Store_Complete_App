@@ -1,0 +1,453 @@
+/*  Style of entire app */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: linear-gradient(#1c3a63, #ff7f3f);
+}
+
+/* Header Nav part */
+header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100000;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+header .logo {
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+}
+
+header .logo img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+header ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+header ul li {
+  list-style: none;
+  margin-left: 20px;
+}
+
+header ul li a {
+  text-decoration: none;
+  padding: 6px 15px;
+  color: #fff;
+  border-radius: 20px;
+}
+
+header ul li a:hover,
+header ul li a.active {
+  background: #fff;
+  color: black;
+}
+
+header.scrolled {
+  background-color: rgba(44, 74, 125, 0.5);
+}
+
+.search-form {
+  margin-left: 30px;
+}
+
+.search-input {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  border-radius: 25px;
+  width: 300px;
+  transition: width 0.5s ease-in-out; /* Add a transition for the width property */
+}
+
+.search-input:focus {
+  width: 600px;
+  outline: none; /* Optional: remove the default browser outline */
+}
+
+.container {
+  width: 100%;
+  max-width: 1700px; /* Increase max-width for larger screens */
+  margin: 50px auto;
+  padding: 50px 20px;
+}
+
+/* Add media queries for responsiveness */
+@media screen and (max-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+@media screen and (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+}
+@media screen and (max-width: 960px) {
+  .container {
+    max-width: 720px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .container {
+    max-width: 540px;
+  }
+}
+@media screen and (max-width: 540px) {
+  .container {
+    padding: 50px 10px; /* Adjust padding for smaller screens */
+  }
+}
+.footer {
+  background-color: black;
+  padding: 10rem 0;
+  font-size: 1.4rem;
+  color: #333333;
+}
+@media only screen and (max-width: 56.25em) {
+  .footer {
+    padding: 8rem 0;
+  }
+}
+.footer__logo-box {
+  text-align: center;
+  margin-bottom: 8rem;
+}
+@media only screen and (max-width: 56.25em) {
+  .footer__logo-box {
+    margin-bottom: 6rem;
+  }
+}
+.footer__logo {
+  width: 15rem;
+  height: auto;
+}
+.footer__navigation {
+  border-top: 1px solid #333333;
+  padding-top: 2rem;
+  display: inline-block;
+}
+@media only screen and (max-width: 56.25em) {
+  .footer__navigation {
+    width: 100%;
+    text-align: center;
+  }
+}
+.footer__list {
+  list-style: none;
+}
+.footer__item {
+  display: inline-block;
+}
+.footer__item:not(:last-child) {
+  margin-right: 1.5rem;
+}
+.footer__link:link, .footer__link:visited {
+  color: black;
+  background-color: #ff7f3f;
+  text-decoration: none;
+  text-transform: uppercase;
+  display: inline-block;
+  transition: all 0.2s;
+}
+.footer__link:hover, .footer__link:active {
+  color: #1c3a63;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
+  transform: rotate(5deg) scale(1.3);
+}
+.footer__copyright {
+  border-top: 1px solid #1c3a63;
+  padding-top: 2rem;
+  width: 80%;
+  float: right;
+}
+@media only screen and (max-width: 56.25em) {
+  .footer__copyright {
+    width: 100%;
+    float: none;
+  }
+}
+
+.cart-items {
+  margin-bottom: 50px;
+}
+.cart-items h3 {
+  margin-bottom: 20px;
+}
+.cart-items .cart-list {
+  list-style: none;
+  margin-bottom: 20px;
+}
+.cart-items .cart-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.cart-items .cart-list li .item-info {
+  display: flex;
+  align-items: center;
+}
+.cart-items .cart-list li .item-info .item-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.cart-items .cart-list li .item-price {
+  font-weight: bold;
+}
+.cart-items .cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.checkout h2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.checkout .checkout-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.checkout .checkout-form .billing-info,
+.checkout .checkout-form .payment-info {
+  width: 48%;
+  margin-bottom: 20px;
+}
+.checkout .checkout-form .billing-info h3,
+.checkout .checkout-form .payment-info h3 {
+  margin-bottom: 20px;
+}
+.checkout .checkout-form .billing-info label,
+.checkout .checkout-form .payment-info label {
+  display: block;
+  margin-bottom: 5px;
+}
+.checkout .checkout-form .billing-info input,
+.checkout .checkout-form .payment-info input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+@media screen and (max-width: 720px) {
+  .checkout .checkout-form .billing-info,
+  .checkout .checkout-form .payment-info {
+    width: 100%;
+  }
+}
+.checkout .submit-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #ff7f3f;
+  color: #fff;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.checkout .submit-button:hover {
+  background-color: #ff5d0c;
+}
+
+.create-console-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.create-console-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.create-console-form input,
+.create-console-form textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Poppins", sans-serif;
+}
+.create-console-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.create-console-form button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #ff7f3f;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.create-console-form button:hover {
+  background-color: #ff5d0c;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  body {
+    font-size: 0.8em; /* Adjust this value as needed */
+  }
+  /* Header Nav part */
+  header {
+    justify-content: center;
+  }
+  header .logo {
+    font-size: 1em;
+  }
+  header .logo img {
+    width: 50px;
+    height: 50px;
+  }
+  header ul li a {
+    text-decoration: none;
+    padding: 3px 7px; /* Adjusted the padding */
+    color: #fff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .search-form {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .search-input {
+    padding: 3px 10px;
+    font-size: 1em;
+    width: 150px;
+  }
+  .search-input:focus {
+    width: 200px;
+    outline: none; /* Optional: remove the default browser outline */
+  }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  body {
+    font-size: 0.85em;
+  }
+  /* Header Nav part */
+  header {
+    justify-content: center;
+  }
+  header .logo {
+    font-size: 1em;
+  }
+  header .logo img {
+    width: 50px;
+    height: 50px;
+  }
+  header ul li a {
+    text-decoration: none;
+    padding: 5px 7px; /* Adjusted the padding */
+    color: #fff;
+    border-radius: 20px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .search-form {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .search-input {
+    padding: 3px 10px;
+    font-size: 1em;
+    width: 300px;
+  }
+  .search-input:focus {
+    width: 390px;
+    outline: none; /* Optional: remove the default browser outline */
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 0.9em;
+  }
+  header ul li {
+    list-style: none;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+  .search-form {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .search-input {
+    padding: 3px 10px;
+    font-size: 1em;
+    width: 450px;
+  }
+  .search-input:focus {
+    width: 500px;
+    outline: none; /* Optional: remove the default browser outline */
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  body {
+    font-size: 1em;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .search-form {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .search-input {
+    padding: 3px 10px;
+    font-size: 1em;
+    width: 700px;
+  }
+  .search-input:focus {
+    width: 800px;
+    outline: none; /* Optional: remove the default browser outline */
+  }
+}/*# sourceMappingURL=ConsoleStylesheet.css.map */
