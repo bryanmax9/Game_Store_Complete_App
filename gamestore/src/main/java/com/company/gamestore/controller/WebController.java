@@ -5,8 +5,11 @@ import com.company.gamestore.service.ServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 // Controller for our front end
 @Controller
@@ -38,6 +41,16 @@ public class WebController {
     public String returnCreateGame(){
         return "createGame";
     }
+
+
+    @GetMapping("/searchGames")
+    public String returnSearch(Model model){
+        List<Game> games = serviceLayer.getAllGames(); //This is an example. Implement a method in your service layer that fetches all the games from your database.
+        model.addAttribute("games", games);
+        return "searchGame";
+    }
+
+
 
     //Getting infrormation of the user through form
     @RequestMapping(value = "/saveGame", method = RequestMethod.POST)

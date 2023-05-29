@@ -1,3 +1,8 @@
+// This script is only for reference:
+// Here, we are just simulating withfull js how the games, consoles,
+// and t-shirts would be displayed in the website
+
+
 //Sticky navigation for background changing when scrolling through page
 const header = document.querySelector("header");
 const headerOriginalPosition = header.offsetTop;
