@@ -28,11 +28,6 @@ public class WebController {
         return "./CheckoutPage/checkout";
     }
 
-    @GetMapping("/search")
-    public String returnSearch(){
-        return "search";
-    }
-
     @GetMapping("/admin")
     public String returnAdmin(){
         return "./AdminLogin/ADMIN";
@@ -117,14 +112,17 @@ public class WebController {
     }
 
 
+    //    Search for all itams (consoles, games, t-shirts)
+    @GetMapping("/search")
+    public String returnSearch(Model model){
+        List<Console> consoles = serviceLayer.getAllConsoles();
+        List<Game> games = serviceLayer.getAllGames();
+        List<Tshirt> tShirts = serviceLayer.getAllTshirts();
+        model.addAttribute("consoles", consoles);
+        model.addAttribute("games", games);
+        model.addAttribute("tshirts", tShirts);
 
+        return "/SearchAllProducts/search";
+    }
 
-//    Search for all itams (consoles, games, t-shirts)
-//@GetMapping("/search")
-//public String returnSearch(Model model){
-//    List<Console> consoles = serviceLayer.getAllConsoles(); //This is an example. Implement a method in your service layer that fetches all the games from your database.
-//
-//    model.addAttribute("consoles", consoles);
-//    return "searchConsole";
-//}
 }
