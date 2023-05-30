@@ -10,7 +10,7 @@
 body {
   min-height: 100vh;
   overflow-x: hidden;
-  background: linear-gradient(#1c3a63, #ff5733);
+  background: linear-gradient(#1c3a63, #ff7f3f);
 }
 
 /* Header Nav part */
@@ -172,7 +172,7 @@ header.scrolled {
 }
 .footer__link:link, .footer__link:visited {
   color: black;
-  background-color: #ff5733;
+  background-color: #ff7f3f;
   text-decoration: none;
   text-transform: uppercase;
   display: inline-block;
@@ -196,63 +196,135 @@ header.scrolled {
   }
 }
 
-body {
-  background-color: #2c3e50;
-  font-family: Arial, sans-serif;
+.cart-items {
+  margin-bottom: 50px;
 }
-
-.search-results {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-  color: white;
-}
-.search-results h2 {
-  font-size: 24px;
+.cart-items h3 {
   margin-bottom: 20px;
 }
+.cart-items .cart-list {
+  list-style: none;
+  margin-bottom: 20px;
+}
+.cart-items .cart-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.cart-items .cart-list li .item-info {
+  display: flex;
+  align-items: center;
+}
+.cart-items .cart-list li .item-info .item-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+}
+.cart-items .cart-list li .item-price {
+  font-weight: bold;
+}
+.cart-items .cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
 
-.game-items {
+.checkout h2 {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.checkout .checkout-form {
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  gap: 20px;
+  justify-content: space-between;
 }
-
-.game-item {
-  width: 250px;
-  padding: 10px;
-  background-color: #34495e;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-  text-align: center;
+.checkout .checkout-form .billing-info,
+.checkout .checkout-form .payment-info {
+  width: 48%;
+  margin-bottom: 20px;
 }
-.game-item img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px;
+.checkout .checkout-form .billing-info h3,
+.checkout .checkout-form .payment-info h3 {
+  margin-bottom: 20px;
 }
-.game-item h3 {
-  font-size: 18px;
+.checkout .checkout-form .billing-info label,
+.checkout .checkout-form .payment-info label {
+  display: block;
   margin-bottom: 5px;
 }
-.game-item p {
-  font-size: 14px;
+.checkout .checkout-form .billing-info input,
+.checkout .checkout-form .payment-info input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
-
-button.checkout-button {
-  padding: 10px 20px;
-  background-color: #4caf50;
-  color: white;
+@media screen and (max-width: 720px) {
+  .checkout .checkout-form .billing-info,
+  .checkout .checkout-form .payment-info {
+    width: 100%;
+  }
+}
+.checkout .submit-button {
+  width: 100%;
+  padding: 15px;
+  background-color: #ff7f3f;
+  color: #fff;
+  font-size: 1.2em;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+.checkout .submit-button:hover {
+  background-color: #ff5d0c;
+}
 
-button.checkout-button:hover {
-  background-color: #3e8e41;
+.create-t-shirt-form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.create-t-shirt-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.create-t-shirt-form input,
+.create-t-shirt-form textarea {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: "Poppins", sans-serif;
+}
+.create-t-shirt-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+.create-t-shirt-form button {
+  display: inline-block;
+  padding: 12px 20px;
+  background-color: #ff7f3f;
+  color: #fff;
+  font-weight: 600;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.create-t-shirt-form button:hover {
+  background-color: #ff5d0c;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -378,4 +450,4 @@ button.checkout-button:hover {
     width: 800px;
     outline: none; /* Optional: remove the default browser outline */
   }
-}/*# sourceMappingURL=searchStylesheet.css.map */
+}/*# sourceMappingURL=T-shirtStylesheet.css.map */

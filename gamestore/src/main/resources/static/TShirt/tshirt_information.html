@@ -52,19 +52,25 @@
 <body>
 <table>
     <tr>
-        <th>Game ID</th>
-        <th>Game Name</th>
-        <th>Game Description</th>
+        <th>T-Shirt ID</th>
+        <th>T-Shirt Size</th>
+        <th>T-Shirt Color</th>
+        <th>T-Shirt Description</th>
+        <th>T-Shirt Price</th>
+        <th>T-Shirt Quantity</th>
     </tr>
     <tr>
-        <td th:text="${game.gameId}"></td>
-        <td th:text="${game.title}"></td>
-        <td th:text="${game.description}"></td>
+        <td th:text="${tshirt.tShirtId}"></td>
+        <td th:text="${tshirt.size}"></td>
+        <td th:text="${tshirt.color}"></td>
+        <td th:text="${tshirt.description}"></td>
+        <td th:text="${tshirt.price}"></td>
+        <td th:text="${tshirt.quantity}"></td>
     </tr>
 </table>
 <div class="button-container">
-    <button class="custom-button"><a href="index.html">Return main page</a></button>
-    <button class="custom-button"><a href="createGame.html">Return create Game</a></button>
+    <button class="custom-button"><a href="/">Return Main Page</a></button>
+    <button class="custom-button"><a href="/createTshirt">Return Create T-Shirt</a></button>
 </div>
 </body>
 </html>

@@ -1,9 +1,9 @@
-<html lang="en">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Game Store</title>
-    <link rel="stylesheet" href="searchGameStylesheet.css" />
+    <link rel="stylesheet" href="/Console/searchConsoleStylesheet.css" />
     <!-- Add this line to include the carousel CSS -->
     <link
       rel="stylesheet"
@@ -14,7 +14,7 @@
   </head>
   <body>
     <header>
-      <a href="index.html" class="logo">
+      <a href="/" class="logo">
         <img src="https://i.imgur.com/QxckFLG.png" alt="Logo" />
         Wormhole Gaming
       </a>
@@ -24,28 +24,29 @@
           <input type="search" class="search-input" placeholder="Search" />
         </form>
         <ul>
-          <li><a href="#">Home</a></li>
+          <li><a href="/">Home</a></li>
         </ul>
       </nav>
     </header>
     <main>
       <section class="search-results">
         <h2>Results:</h2>
-        <div class="game-items">
+        <div class="console-items">
           <!-- Add game items here -->
-          <div th:each="game : ${games}" class="game-item">
+          <div th:each="console : ${consoles}" class="console-item">
             <img
-              th:src="@{'https://i.imgur.com/9dDFYB9.png'}"
-              th:alt="${game.title}"
+              th:src="@{'https://i.imgur.com/sVPL9xD.png'}"
+              th:alt="${console.model}"
             />
             <!-- Hardcoded image URL -->
-            <p th:text="'ID: ' + ${game.gameId}"></p>
-            <h3 th:text="${game.title}"></h3>
-            <p th:text="'Price: $' + ${game.price}"></p>
-            <p th:text="${game.description}"></p>
+            <p th:text="'ID: ' + ${console.consoleId}"></p>
+            <h3 th:text="${console.model}"></h3>
+            <p th:text="'Price: $' + ${console.price}"></p>
+            <p th:text="'Memory Amount: ' +${console.memoryAmount}"></p>
+            <p th:text="'Quantity: ' + ${console.quantity}"></p>
             <button
               class="checkout-button"
-              onclick="location.href='checkout.html';"
+              onclick="location.href='/checkout';"
             >
               Check Out
             </button>
