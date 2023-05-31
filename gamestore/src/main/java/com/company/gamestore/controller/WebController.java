@@ -3,6 +3,7 @@ package com.company.gamestore.controller;
 import com.company.gamestore.model.Console;
 import com.company.gamestore.model.Game;
 import com.company.gamestore.model.Tshirt;
+import com.company.gamestore.repository.GameRepository;
 import com.company.gamestore.service.ServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 // Controller for our front end
 @Controller
@@ -111,13 +114,90 @@ public class WebController {
         return modelAndView;
     }
 
+//    Searching for specific items
+@GetMapping("/search")
+public String returnSearch(@RequestParam(name="q", required=false, defaultValue="") String query, Model model) {
+    // Check if the query is empty
+    if (query == null || query.isEmpty()) {
+        //If the query is empty, then we will show to the user all items that we have
+        return "redirect:/searchAll";
+    }
+
+    // Using what the user wrote, we are going to retrieve if what user wrote has
+    // if matches a game title
+    // if matches console manufacturer
+    // if matches a color or a size of a t-shirt
+    List<Game> gamesExact = serviceLayer.getAllGamesByTitle(query);
+    List<Console> consolesExact = serviceLayer.getAllConsolesByManufacturer(query);
+    List<Tshirt> tshirtsByColorExact = serviceLayer.getAllTshirtsByColor(query);
+    List<Tshirt> tshirtsBySizeExact = serviceLayer.getAllTshirtBySize(query);
+
+    // Combine the two lists into one and removing repeating elements using "distinct", removing duplicates. Then we collect all into a list using "collect"
+    List<Tshirt> tshirtsExact = Stream.concat(tshirtsByColorExact.stream(), tshirtsBySizeExact.stream())
+            .distinct()
+            .collect(Collectors.toList());
+
+
+    //If for some reason what the user wrote doesn't match exactly
+    //Then we are going to retrieve to what might be searching for
+    //Example:
+    // User searched "Mario"
+    // There is an item called "Super Mario Odyssey" but we want to still retrieve that
+
+    //First we will retrieve everything we have for each of the items
+    List<Game> allGames = serviceLayer.getAllGames();
+    List<Console> allConsoles = serviceLayer.getAllConsoles();
+    List<Tshirt> allTshirts = serviceLayer.getAllTshirts();
+
+    //Now, we will filter depending on the search of the user
+    //For games if the game title contains the word written by the user in the search bar
+    List<Game> gamesBroad = allGames.stream()
+            .filter(game -> game.getTitle().toLowerCase().contains(query.toLowerCase()))
+            .collect(Collectors.toList());
+
+    //For the consoles, if a console model contains a word wrote by the user in the search bar
+    List<Console> consolesBroad = allConsoles.stream()
+            .filter(console -> console.getModel().toLowerCase().contains(query.toLowerCase()))
+            .collect(Collectors.toList());
+
+    //For the T-shirts, if the color is the same as the color written by the user
+    List<Tshirt> tshirtsBroad = allTshirts.stream()
+            .filter(tshirt -> tshirt.getColor().toLowerCase().equals(query.toLowerCase()))
+            .collect(Collectors.toList());
+
+
+
+    // Merge exact and broad matches, removing duplicates
+    List<Game> games = Stream.concat(gamesExact.stream(), gamesBroad.stream())
+            .distinct()
+            .collect(Collectors.toList());
+
+    List<Console> consoles = Stream.concat(consolesExact.stream(), consolesBroad.stream())
+            .distinct()
+            .collect(Collectors.toList());
+
+    List<Tshirt> tshirts = Stream.concat(tshirtsExact.stream(), tshirtsBroad.stream())
+            .distinct()
+            .collect(Collectors.toList());
+
+    // Add the items to the model
+    model.addAttribute("games", games);
+    model.addAttribute("consoles", consoles);
+    model.addAttribute("tshirts", tshirts);
+
+    // Return the search page
+    return "/SearchAllProducts/search";
+}
+
 
     //    Search for all itams (consoles, games, t-shirts)
-    @GetMapping("/search")
-    public String returnSearch(Model model){
+    @GetMapping("/searchAll")
+    public String returnSearchAll(Model model){
         List<Console> consoles = serviceLayer.getAllConsoles();
         List<Game> games = serviceLayer.getAllGames();
         List<Tshirt> tShirts = serviceLayer.getAllTshirts();
+
+
         model.addAttribute("consoles", consoles);
         model.addAttribute("games", games);
         model.addAttribute("tshirts", tShirts);

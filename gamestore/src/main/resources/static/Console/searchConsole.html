@@ -20,9 +20,10 @@
       </a>
       <nav>
         <!-- Search bar -->
-        <form class="search-form">
-          <input type="search" class="search-input" placeholder="Search" />
+        <form action="/search" method="get" class="search-form">
+          <input name="q" type="search" class="search-input" placeholder="Search" />
         </form>
+
         <ul>
           <li><a href="/">Home</a></li>
         </ul>
@@ -30,7 +31,7 @@
     </header>
     <main>
       <section class="search-results">
-        <h2>Results:</h2>
+        <h2>Console Catalog:</h2>
         <div class="console-items">
           <!-- Add game items here -->
           <div th:each="console : ${consoles}" class="console-item">
