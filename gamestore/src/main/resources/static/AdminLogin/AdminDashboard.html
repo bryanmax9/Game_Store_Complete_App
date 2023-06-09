@@ -1,0 +1,189 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Game Store</title>
+    <link rel="stylesheet" href="/AdminLogin/AdminDashStyle.css" />
+    <!-- Add this line to include the carousel CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <!-- Add this line to include the carousel JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo">
+        <img src="https://i.imgur.com/QxckFLG.png" alt="Logo" />
+        Wormhole Gaming
+      </a>
+      <nav>
+        <!-- Search bar -->
+        <!-- Search bar -->
+        <form action="/search" method="get" class="search-form">
+          <input
+            name="q"
+            type="search"
+            class="search-input"
+            placeholder="Search"
+          />
+        </form>
+
+        <ul>
+          <li><a href="/">Home</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="cards-section">
+        <div class="card">
+          <div class="card__front">
+            <img
+              src="https://i.imgur.com/9dDFYB9.png"
+              alt="Futuristic GBA"
+              class="card__image"
+            />
+            <h3 class="card__title">Create Games</h3>
+            <p class="card__description">
+              Create Games Web. Create games in order to stock the web store.
+            </p>
+          </div>
+          <div class="card__back">
+            <a href="/createGame" class="card__link"
+              >Click <strong>Here</strong> to go to page for creating Games!</a
+            >
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card__front">
+            <img
+              src="https://i.imgur.com/sVPL9xD.png"
+              alt="Futuristic PS4"
+              class="card__image"
+            />
+            <h3 class="card__title">Create Consoles</h3>
+            <p class="card__description">
+              Create Consoles Web. Create consoles in order to stock the web
+              store.
+            </p>
+          </div>
+          <div class="card__back">
+            <a href="/createConsole" class="card__link"
+              >Click <strong>Here</strong> to go to page for creating
+              Consoles!</a
+            >
+          </div>
+        </div>
+        <div class="card">
+          <div class="card__front">
+            <img
+              src="https://i.imgur.com/IMKWUEB.png"
+              alt="Futuristic Shirt"
+              class="card__image"
+            />
+            <h3 class="card__title">Create T-Shirts</h3>
+            <p class="card__description">
+              Create T-shirta Web. Create T-Shirts in order to stock the web
+              store.
+            </p>
+          </div>
+          <div class="card__back">
+            <a href="/createTshirt" class="card__link"
+              >Click <strong>Here</strong> to go to page for creating
+              T-Shirts!</a
+            >
+          </div>
+        </div>
+        <!-- Add more cards  -->
+      </section>
+    </main>
+    <script>
+      const token = localStorage.getItem('token');
+
+      fetch('/admin/dashboard', {
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      })
+              .then(response => {
+                if (response.ok) {
+                  return response.text(); // or response.json() if you expect a JSON response
+                } else if (response.status === 401) {
+                  throw new Error('User is not authenticated');
+                } else {
+                  throw new Error('Something went wrong');
+                }
+              })
+              .then(data => {
+                // Handle the response data here
+                console.log(data);
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
+    </script>
+  </body>
+  <footer class="footer">
+    <div class="footer__logo-box">
+      <img
+        src="https://bryan-tineo-portafolio2.netlify.app/images/bryanmax9_icon.png"
+        alt="Full logo"
+        class="footer__logo"
+      />
+    </div>
+    <div class="row">
+      <div class="col-1-of-2">
+        <div class="footer__navigation">
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a
+                href="https://www.linkedin.com/in/bryan-tineo/"
+                class="footer__link"
+                >Company</a
+              >
+            </li>
+            <li class="footer__item">
+              <a
+                href="https://www.linkedin.com/in/bryan-tineo/"
+                class="footer__link"
+                >Contact</a
+              >
+            </li>
+            <li class="footer__item">
+              <a
+                href="https://www.linkedin.com/in/bryan-tineo/"
+                class="footer__link"
+                >Carrers</a
+              >
+            </li>
+            <li class="footer__item">
+              <a
+                href="https://www.linkedin.com/in/bryan-tineo/"
+                class="footer__link"
+                >Privacy policy</a
+              >
+            </li>
+            <li class="footer__item">
+              <a
+                href="https://www.linkedin.com/in/bryan-tineo/"
+                class="footer__link"
+                >Terms</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-1-of-2">
+        <p class="footer__copyright">
+          Built by
+          <a href="https://bryantineo.hashnode.dev/" class="footer__link"
+            >Bryan Tineo</a
+          >
+          for my Bootcamp at Neflix. Copyright &copy; by Bryan Tineo.
+        </p>
+      </div>
+    </div>
+  </footer>
+</html>

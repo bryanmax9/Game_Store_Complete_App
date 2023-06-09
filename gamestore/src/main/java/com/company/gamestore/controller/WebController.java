@@ -15,6 +15,15 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+//Imports needed for GET requests that need to check JWT authentication
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.GetMapping;
+
+
+
 // Controller for our front end
 @Controller
 public class WebController {
@@ -34,6 +43,14 @@ public class WebController {
     @GetMapping("/admin")
     public String returnAdmin(){
         return "./AdminLogin/ADMIN";
+    }
+
+    @GetMapping("/admin/dashboard")
+    public String returnAdminDashboard() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        return "./AdminLogin/AdminDashboard";
+
     }
 
     @GetMapping("/createGame")
