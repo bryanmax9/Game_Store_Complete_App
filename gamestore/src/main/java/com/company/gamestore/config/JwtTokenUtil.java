@@ -3,8 +3,10 @@ package com.company.gamestore.config;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -50,10 +52,19 @@ public class JwtTokenUtil implements Serializable {
     }
 
     //generate token for user
+    //generate token for user
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
+        // Add roles to the claims
+        claims.put("roles", userDetails.getAuthorities().stream().map(s -> s.toString()).collect(Collectors.toList()));
         return doGenerateToken(claims, userDetails.getUsername());
     }
+    public List<String> getRolesFromToken(String token) {
+        Claims claims = getAllClaimsFromToken(token);
+        return (List<String>) claims.get("roles");
+    }
+
+
 
     //while creating the token -
     //1. Define  claims of the token, like Issuer, Expiration, Subject, and the ID

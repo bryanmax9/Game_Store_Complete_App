@@ -6,6 +6,7 @@ import com.company.gamestore.model.Tshirt;
 import com.company.gamestore.repository.GameRepository;
 import com.company.gamestore.service.ServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -22,6 +23,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import javax.servlet.http.HttpServletRequest;
 
 
 // Controller for our front end
@@ -45,13 +47,20 @@ public class WebController {
         return "./AdminLogin/ADMIN";
     }
 
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @GetMapping("/admin/dashboard")
-    public String returnAdminDashboard() {
+    public ModelAndView returnAdminDashboard(HttpServletRequest request, ModelAndView modelAndView) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        String token = (String) request.getSession().getAttribute("token"); // Retrieve the token from the session
 
-        return "./AdminLogin/AdminDashboard";
+        // Use the token as needed
+        modelAndView.setViewName("./AdminLogin/AdminDashboard"); // Your view name
+        modelAndView.addObject("token", token); // Add the token to the model and view
 
+        return modelAndView;
     }
+
+
 
     @GetMapping("/createGame")
     public String returnCreateGame(){
