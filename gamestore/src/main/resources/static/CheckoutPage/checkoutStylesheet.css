@@ -408,4 +408,96 @@ header.scrolled {
     width: 800px;
     outline: none; /* Optional: remove the default browser outline */
   }
+}
+.game-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.game-item {
+  width: 250px;
+  padding: 10px;
+  background-color: #34495e;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+.game-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+.game-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+.game-item p {
+  font-size: 14px;
+}
+
+button.checkout-button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.checkout-button:hover {
+  background-color: #3e8e41;
+}
+
+.console-item {
+  width: 250px;
+  padding: 10px;
+  background-color: #34495e;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.console-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.console-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.console-item p {
+  font-size: 14px;
+}
+
+.tshirt-item {
+  width: 250px;
+  padding: 10px;
+  background-color: #34495e;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.tshirt-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.tshirt-item h3 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+.tshirt-item p {
+  font-size: 14px;
 }/*# sourceMappingURL=checkoutStylesheet.css.map */

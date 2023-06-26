@@ -21,6 +21,7 @@
       <nav>
         <!-- Search bar -->
         <!-- Search bar -->
+
         <form action="/search" method="get" class="search-form">
           <input
             name="q"
@@ -99,31 +100,7 @@
         <!-- Add more cards  -->
       </section>
     </main>
-    <script>
-      const token = localStorage.getItem('token');
 
-      fetch('/admin/dashboard', {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      })
-              .then(response => {
-                if (response.ok) {
-                  return response.text(); // or response.json() if you expect a JSON response
-                } else if (response.status === 401) {
-                  throw new Error('User is not authenticated');
-                } else {
-                  throw new Error('Something went wrong');
-                }
-              })
-              .then(data => {
-                // Handle the response data here
-                console.log(data);
-              })
-              .catch(error => {
-                console.error('Error:', error);
-              });
-    </script>
   </body>
   <footer class="footer">
     <div class="footer__logo-box">

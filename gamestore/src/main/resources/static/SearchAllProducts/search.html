@@ -47,10 +47,11 @@
                 <p th:text="'Quantity: ' +${game.quantity}"></p>
                 <button
                         class="checkout-button"
-                        onclick="location.href='/checkout';"
+                        th:onclick="'window.location.href=\'/checkout/game/' + ${game.gameId} + '\''"
                 >
                     Check Out
                 </button>
+
                 <!-- Redirect to 'checkout.html' when the button is clicked -->
             </div>
             <div th:each="console : ${consoles}" class="console-item">
@@ -66,10 +67,11 @@
                 <p th:text="'Quantity: ' + ${console.quantity}"></p>
                 <button
                         class="checkout-button"
-                        onclick="location.href='/checkout';"
+                        th:onclick="'window.location.href=\'/checkout/console/' + ${console.consoleId} + '\''"
                 >
                     Check Out
                 </button>
+
                 <!-- Redirect to 'checkout.html' when the button is clicked -->
             </div>
             <div th:each="tshirt : ${tshirts}" class="tshirt-item">
@@ -86,10 +88,11 @@
                 <p th:text="'Quantity: ' + ${tshirt.quantity}"></p>
                 <button
                         class="checkout-button"
-                        onclick="location.href='/checkout';"
+                        th:onclick="'window.location.href=\'/checkout/tshirt/' + ${tshirt.tShirtId} + '\''"
                 >
                     Check Out
                 </button>
+
                 <!-- Redirect to 'checkout.html' when the button is clicked -->
             </div>
         </div>

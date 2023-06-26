@@ -2,9 +2,11 @@ package com.company.gamestore.controller;
 
 import com.company.gamestore.model.Console;
 import com.company.gamestore.model.Game;
+import com.company.gamestore.model.Invoice;
 import com.company.gamestore.model.Tshirt;
 import com.company.gamestore.repository.GameRepository;
 import com.company.gamestore.service.ServiceLayer;
+import com.company.gamestore.viewmodel.InvoiceViewModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -37,10 +39,37 @@ public class WebController {
         return "./MainPage/index";
     }
 
-    @GetMapping("/checkout")
-    public String returnCheckout(){
+    @GetMapping("/checkout/{type}/{id}")
+    public String returnCheckout(@PathVariable("type") String type, @PathVariable("id") int id, Model model){
+        // Based on the type, call the correct service to get the item
+        Object item;
+        String itemDetail = ""; // This will hold the detail (title, model, or size)
+        switch (type) {
+            case "game":
+                Game game = serviceLayer.findGame(id);
+                item = game;
+                itemDetail = game.getTitle();
+                break;
+            case "console":
+                Console console = serviceLayer.findConsole(id);
+                item =console;
+                itemDetail = console.getModel();
+                break;
+            case "tshirt":
+                Tshirt tshirt = serviceLayer.findTshirt(id);
+                item = tshirt;
+                itemDetail = tshirt.getColor();
+                break;
+            default:
+                throw new IllegalArgumentException("Invalid type: " + type);
+        }
+
+        model.addAttribute("item", item);
+        model.addAttribute("itemId", id);
+        model.addAttribute("itemDetail", itemDetail);
         return "./CheckoutPage/checkout";
     }
+
 
     @GetMapping("/admin")
     public String returnAdmin(){
@@ -85,6 +114,18 @@ public class WebController {
         return "./Game/searchGame";
     }
 
+    @GetMapping("/ConsoleCatalog")
+    public String returnSearchConsole(Model model){
+        List<Console> consoles = serviceLayer.getAllConsoles(); //This is an example. Implement a method in your service layer that fetches all the games from your database.
+        model.addAttribute("consoles", consoles);
+        return "./Console/searchConsole";
+    }
+    @GetMapping("/TshirtCatalog")
+    public String returnSearchTShirt(Model model){
+        List<Tshirt> tshirts = serviceLayer.getAllTshirts(); //This is an example. Implement a method in your service layer that fetches all the games from your database.
+        model.addAttribute("tshirts", tshirts);
+        return "./TShirt/searchTshirt";
+    }
 
 
     //Getting infrormation of the user through form
@@ -102,13 +143,8 @@ public class WebController {
         return modelAndView;
     }
 
-    @GetMapping("/ConsoleCatalog")
-    public String returnSearchConsole(Model model){
-        List<Console> consoles = serviceLayer.getAllConsoles(); //This is an example. Implement a method in your service layer that fetches all the games from your database.
-        model.addAttribute("consoles", consoles);
-        return "./Console/searchConsole";
-    }
-    // *******8
+
+
     @RequestMapping(value = "/saveConsole", method = RequestMethod.POST)
     public ModelAndView saveConsole(@ModelAttribute Console console){
         System.out.println("Game from UI =" + console);
@@ -121,13 +157,7 @@ public class WebController {
         return modelAndView;
     }
 
-    @GetMapping("/TshirtCatalog")
-    public String returnSearchTShirt(Model model){
-        List<Tshirt> tshirts = serviceLayer.getAllTshirts(); //This is an example. Implement a method in your service layer that fetches all the games from your database.
-        model.addAttribute("tshirts", tshirts);
-        return "./TShirt/searchTshirt";
-    }
-    // *******8
+
     @RequestMapping(value = "/saveTshirt", method = RequestMethod.POST)
     public ModelAndView saveTshirt(@ModelAttribute Tshirt tshirt){
         System.out.println("Game from UI =" + tshirt);
@@ -137,6 +167,24 @@ public class WebController {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("./TShirt/tshirt_information");
         modelAndView.addObject("tshirt",tshirt);
+        return modelAndView;
+    }
+
+    @RequestMapping(value = "/saveInvoice", method = RequestMethod.POST)
+    public ModelAndView saveInvoice(@ModelAttribute Invoice invoice){
+        System.out.println("invoice from UI =" + invoice);
+
+        // Convert invoice to InvoiceViewModel
+        InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
+        invoiceViewModel.setId(invoice.getId());
+        invoiceViewModel.setName(invoice.getName());
+        // Add other fields here
+
+        serviceLayer.saveInvoice(invoiceViewModel);
+
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("./Invoice/invoice_information");
+        modelAndView.addObject("invoice",invoice);
         return modelAndView;
     }
 
