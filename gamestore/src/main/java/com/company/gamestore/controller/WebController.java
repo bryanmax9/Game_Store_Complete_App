@@ -44,21 +44,26 @@ public class WebController {
         // Based on the type, call the correct service to get the item
         Object item;
         String itemDetail = ""; // This will hold the detail (title, model, or size)
+        String itemType = ""; // Item category of Console, game or T-Shirt
         switch (type) {
             case "game":
                 Game game = serviceLayer.findGame(id);
                 item = game;
                 itemDetail = game.getTitle();
+                itemType = "Game";
                 break;
             case "console":
                 Console console = serviceLayer.findConsole(id);
                 item =console;
                 itemDetail = console.getModel();
+                itemType = "Console";
+
                 break;
             case "tshirt":
                 Tshirt tshirt = serviceLayer.findTshirt(id);
                 item = tshirt;
                 itemDetail = tshirt.getColor();
+                itemType = "T-Shirt";
                 break;
             default:
                 throw new IllegalArgumentException("Invalid type: " + type);
@@ -66,6 +71,7 @@ public class WebController {
 
         model.addAttribute("item", item);
         model.addAttribute("itemId", id);
+        model.addAttribute("itemType", itemType);
         model.addAttribute("itemDetail", itemDetail);
         return "./CheckoutPage/checkout";
     }
@@ -169,22 +175,32 @@ public class WebController {
         modelAndView.addObject("tshirt",tshirt);
         return modelAndView;
     }
-
-    @RequestMapping(value = "/saveInvoice", method = RequestMethod.POST)
-    public ModelAndView saveInvoice(@ModelAttribute Invoice invoice){
+    @RequestMapping(value = "/saveOurInvoice", method = RequestMethod.POST)
+    public ModelAndView saveInvoice(@ModelAttribute("invoice") Invoice invoice) {
         System.out.println("invoice from UI =" + invoice);
 
         // Convert invoice to InvoiceViewModel
         InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
-        invoiceViewModel.setId(invoice.getId());
+        invoiceViewModel.setId(invoiceViewModel.getId());
         invoiceViewModel.setName(invoice.getName());
-        // Add other fields here
+        invoiceViewModel.setStreet(invoice.getStreet());
+        invoiceViewModel.setCity(invoice.getCity());
+        invoiceViewModel.setState(invoice.getState());
+        invoiceViewModel.setZipcode(invoice.getZipcode());
+        invoiceViewModel.setItemType(invoice.getItemType());
+        invoiceViewModel.setItemId(invoice.getItemId());
+        invoiceViewModel.setQuantity(invoice.getQuantity());
+        invoiceViewModel.setUnitPrice(invoice.getUnitPrice());
+        invoiceViewModel.setSubtotal(invoice.getSubtotal());
+        invoiceViewModel.setTax(invoice.getTax());
+        invoiceViewModel.setProcessingFee(invoice.getProcessingFee());
+        invoiceViewModel.setTotal(invoice.getTotal());
 
         serviceLayer.saveInvoice(invoiceViewModel);
 
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("./Invoice/invoice_information");
-        modelAndView.addObject("invoice",invoice);
+        modelAndView.addObject("invoice",invoiceViewModel);
         return modelAndView;
     }
 

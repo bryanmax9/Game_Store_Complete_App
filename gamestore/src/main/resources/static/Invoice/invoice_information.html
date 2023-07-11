@@ -50,17 +50,23 @@
     </style>
 </head>
 <body>
+
 <table>
     <tr>
         <th>Invoice ID</th>
-        <th>Item Name</th>
-        <th>Item price</th>
-        <th>Item Total</th>
+        <th>Customer Name</th>
+        <th>Shipping Address</th>
+        <th>Item ID</th>
+        <th>Quantity</th>
+        <th>Total</th>
     </tr>
     <tr>
-        <td th:text="${game.gameId}"></td>
-        <td th:text="${game.title}"></td>
-        <td th:text="${game.description}"></td>
+        <td th:text="${invoice.id}"></td>
+        <td th:text="${invoice.name}"></td>
+        <td><span th:text="${invoice.street}"></span>, <span th:text="${invoice.city}"></span>, <span th:text="${invoice.state}"></span> <span th:text="${invoice.zipcode}"></span></td>
+        <td th:text="${invoice.itemId}"></td>
+        <td th:text="${invoice.quantity}"></td>
+        <td th:text="${invoice.total}"></td>
     </tr>
 </table>
 <div class="button-container">

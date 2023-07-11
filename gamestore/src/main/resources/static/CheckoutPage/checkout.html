@@ -63,26 +63,32 @@
             </div>
         </div>
 
-
-        <form class="checkout-form">
+        <form action="/saveOurInvoice" method="post" class="checkout-form">
             <div class="billing-info">
                 <h3>Billing Information</h3>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
                 <label for="street">Street:</label>
                 <input type="text" id="street" name="street" required>
+                <label for="city">City:</label>
+                <input type="text" id="city" name="city" required>
                 <label for="state">State:</label>
                 <input type="text" id="state" name="state" required>
                 <label for="zipcode">Zipcode:</label>
                 <input type="text" id="zipcode" name="zipcode" required>
             </div>
             <div class="payment-info">
-                <h3>Payment Information</h3>
-                <label for="item_type">Item Type:</label>
-                <input type="text" id="item_type" name="item_type" th:value="${itemDetail}" required readonly>
-                <label for="item_id">Item ID: </label>
-                <input type="text" id="item_id" name="item_id" th:value="${itemId}" required readonly>
+                <h3>Item Information</h3>
+                <label for="itemType">Item Type:</label>
+                <input type="text" id="itemType" name="itemType" th:value="${itemType}" required readonly>
+                <label for="itemDetail">Item Title:</label>
+                <input type="text" id="itemDetail" name="itemDetail" th:value="${itemDetail}" required readonly>
+                <label for="itemId">Item ID: </label>
+                <input type="text" id="itemId" name="itemId" th:value="${itemId}" required readonly>
                 <label for="quantity">Quantity:</label>
                 <input type="number" id="quantity" name="quantity" required>
             </div>
+<!--            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>-->
             <button type="submit" class="submit-button">Submit Order</button>
         </form>
     </section>
@@ -117,8 +123,8 @@
         </div>
         <div class="col-1-of-2">
             <p class="footer__copyright">
-                Built by <a href="https://bryantineo.hashnode.dev/" class="footer__link">Bryan Tineo</a> for
-                my Bootcamp at Neflix. Copyright &copy; by Bryan Tineo.
+                Built by <a href="https://bryantineo.hashnode.dev/" class="footer__link">Bryan Tineo</a> and <a href="https://www.linkedin.com/in/jessieestrada/" class="footer__link">Jessie Estrada</a> for
+                our Bootcamp at Neflix. Copyright &copy; by Bryan Tineo and Jessie Estrada.
             </p>
         </div>
     </div>
@@ -126,3 +132,5 @@
 
 
 </html>
+
+

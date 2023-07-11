@@ -432,13 +432,6 @@ public class ServiceLayer {
         }
         System.out.println("Hello CI CD");
         return viewModel;
-
-
-
-
-
-
-
     }
 
     public Invoice findInvoice(int id){

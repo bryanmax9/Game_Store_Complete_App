@@ -58,7 +58,7 @@ protected void configure(HttpSecurity httpSecurity) throws Exception {
     httpSecurity.csrf().disable()
             // dont authenticate this particular request
             .authorizeRequests()
-            .antMatchers("/authenticate", "/","/admin").permitAll() // permit requests to / and /authenticate
+            .antMatchers("/authenticate", "/","/admin","/saveOurInvoice").permitAll() // permit requests to / and /authenticate
             // these endpoints require authentication
             .antMatchers("/createGame", "/createConsole", "/createTshirt", "/admin/dashboard").hasRole("ADMIN")
             // all other requests are permitted
