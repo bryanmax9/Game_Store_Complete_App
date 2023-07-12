@@ -50,31 +50,31 @@ public class WebController {
         Object item;
         String itemDetail = ""; // This will hold the detail (title, model, or size)
         String itemType = ""; // Item category of Console, game or T-Shirt
-        String imagen = "";
+        String imageUrl = ""; // This will hold the imageUrl
 
         switch (type) {
             case "game":
                 Game game = serviceLayer.findGame(id);
                 item = game;
                 itemDetail = game.getTitle();
+                imageUrl = game.getImageUrl();
                 itemType = "Game";
-                imagen = "https://i.imgur.com/9dDFYB9.png";
                 model.addAttribute("quantity", game.getQuantity()); // add this line
                 break;
             case "console":
                 Console console = serviceLayer.findConsole(id);
                 item = console;
                 itemDetail = console.getModel();
+                imageUrl = console.getImageUrl();
                 itemType = "Console";
-                imagen = "https://i.imgur.com/sVPL9xD.png";
                 model.addAttribute("quantity", console.getQuantity()); // add this line
                 break;
             case "tshirt":
                 Tshirt tshirt = serviceLayer.findTshirt(id);
                 item = tshirt;
                 itemDetail = tshirt.getColor();
+                imageUrl = "https://i.imgur.com/IMKWUEB.png";
                 itemType = "T-Shirt";
-                imagen = "https://i.imgur.com/IMKWUEB.png";
                 model.addAttribute("quantity", tshirt.getQuantity()); // add this line
                 break;
             default:
@@ -85,12 +85,13 @@ public class WebController {
         model.addAttribute("itemId", id);
         model.addAttribute("itemType", itemType);
         model.addAttribute("itemDetail", itemDetail);
+        model.addAttribute("imageUrl", imageUrl); // Add this line
 
-        model.addAttribute("imageUrl",imagen);
         System.out.println(model);
 
         return "./CheckoutPage/checkout";
     }
+
 
 
     @GetMapping("/admin")
@@ -197,6 +198,7 @@ public class WebController {
 
         // Convert invoice to InvoiceViewModel
         InvoiceViewModel invoiceViewModel = new InvoiceViewModel();
+        invoiceViewModel.setImageUrl(invoice.getImageUrl());
         invoiceViewModel.setId(invoiceViewModel.getId());
         invoiceViewModel.setName(invoice.getName());
         invoiceViewModel.setStreet(invoice.getStreet());

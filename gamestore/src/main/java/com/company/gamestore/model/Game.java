@@ -20,6 +20,9 @@ public class Game {
     @Column(name = "game_id")
     private Integer gameId;
 
+    @Column(name = "imageUrl")
+    private String imageUrl;
+
     @NotEmpty(message = "You must supply a title.")
     private String title;
 
@@ -44,8 +47,9 @@ public class Game {
 
     }
 
-    public Game(Integer gameId, String title, String esrbRating, String description, BigDecimal price, String studio, Integer quantity) {
+    public Game(Integer gameId, String imageUrl, String title, String esrbRating, String description, BigDecimal price, String studio, Integer quantity) {
         this.gameId = gameId;
+        this.imageUrl = imageUrl;
         this.title = title;
         this.esrbRating = esrbRating;
         this.description = description;
@@ -60,6 +64,14 @@ public class Game {
 
     public void setGameId(Integer gameId) {
         this.gameId = gameId;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getTitle() {
@@ -113,20 +125,21 @@ public class Game {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Game)) return false;
         Game game = (Game) o;
-        return Objects.equals(gameId, game.gameId) && Objects.equals(title, game.title) && Objects.equals(esrbRating, game.esrbRating) && Objects.equals(description, game.description) && Objects.equals(price, game.price) && Objects.equals(studio, game.studio) && Objects.equals(quantity, game.quantity);
+        return Objects.equals(getGameId(), game.getGameId()) && Objects.equals(getImageUrl(), game.getImageUrl()) && Objects.equals(getTitle(), game.getTitle()) && Objects.equals(getEsrbRating(), game.getEsrbRating()) && Objects.equals(getDescription(), game.getDescription()) && Objects.equals(getPrice(), game.getPrice()) && Objects.equals(getStudio(), game.getStudio()) && Objects.equals(getQuantity(), game.getQuantity());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(gameId, title, esrbRating, description, price, studio, quantity);
+        return Objects.hash(getGameId(), getImageUrl(), getTitle(), getEsrbRating(), getDescription(), getPrice(), getStudio(), getQuantity());
     }
 
     @Override
     public String toString() {
         return "Game{" +
                 "gameId=" + gameId +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", title='" + title + '\'' +
                 ", esrbRating='" + esrbRating + '\'' +
                 ", description='" + description + '\'' +

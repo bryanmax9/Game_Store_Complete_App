@@ -26,7 +26,8 @@ public class Console {
     @NotEmpty(message = "You must supply a manufacturer")
     private String manufacturer;
 
-
+    @Column(name = "imageUrl")
+    private String imageUrl;
 
     @NotEmpty(message = "You must supply a Memory Amount")
     @Column(name = "memory_amount")
@@ -44,10 +45,12 @@ public class Console {
     public Console(){
 
     }
-    public Console(int consoleId, String model, String manufacturer, String memoryAmount, String processor, BigDecimal price, int quantity) {
+
+    public Console(int consoleId, String model, String manufacturer, String imageUrl, String memoryAmount, String processor, BigDecimal price, int quantity) {
         this.consoleId = consoleId;
         this.model = model;
         this.manufacturer = manufacturer;
+        this.imageUrl = imageUrl;
         this.memoryAmount = memoryAmount;
         this.processor = processor;
         this.price = price;
@@ -76,6 +79,14 @@ public class Console {
 
     public void setManufacturer(String manufacturer) {
         this.manufacturer = manufacturer;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getMemoryAmount() {
@@ -113,14 +124,14 @@ public class Console {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Console)) return false;
         Console console = (Console) o;
-        return consoleId == console.consoleId && quantity == console.quantity && Objects.equals(model, console.model) && Objects.equals(manufacturer, console.manufacturer) && Objects.equals(memoryAmount, console.memoryAmount) && Objects.equals(processor, console.processor) && Objects.equals(price, console.price);
+        return getConsoleId() == console.getConsoleId() && getQuantity() == console.getQuantity() && Objects.equals(getModel(), console.getModel()) && Objects.equals(getManufacturer(), console.getManufacturer()) && Objects.equals(getImageUrl(), console.getImageUrl()) && Objects.equals(getMemoryAmount(), console.getMemoryAmount()) && Objects.equals(getProcessor(), console.getProcessor()) && Objects.equals(getPrice(), console.getPrice());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(consoleId, model, manufacturer, memoryAmount, processor, price, quantity);
+        return Objects.hash(getConsoleId(), getModel(), getManufacturer(), getImageUrl(), getMemoryAmount(), getProcessor(), getPrice(), getQuantity());
     }
 
     @Override
@@ -129,6 +140,7 @@ public class Console {
                 "consoleId=" + consoleId +
                 ", model='" + model + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", memoryAmount='" + memoryAmount + '\'' +
                 ", processor='" + processor + '\'' +
                 ", price=" + price +

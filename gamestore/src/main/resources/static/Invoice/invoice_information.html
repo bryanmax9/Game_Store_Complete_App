@@ -17,12 +17,8 @@
       <div class="main-content">
         <div class="logo">
           <div class="logo">
-            <img
-              th:src="${invoice.itemType == 'Game' ? 'https://i.imgur.com/9dDFYB9.png' :
-                   invoice.itemType == 'Console' ? 'https://i.imgur.com/sVPL9xD.png' :
-                   'https://i.imgur.com/IMKWUEB.png'}"
-              alt="Logo"
-            />
+            <img th:src="${invoice.imageUrl}" alt="Logo" />
+
           </div>
         </div>
 

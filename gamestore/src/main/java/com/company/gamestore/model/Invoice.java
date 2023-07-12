@@ -16,6 +16,9 @@ public class Invoice {
     @Column(name = "invoice_id")
     private Integer id;
 
+    @Column(name = "imageUrl")
+    private String imageUrl;
+
     @NotEmpty(message = "You must supply a Name.")
     @Column(name = "name")
     private String name;
@@ -66,8 +69,9 @@ public class Invoice {
 
     public Invoice() {}
 
-    public Invoice(Integer id, String name, String street, String city, String state, String zipcode, String itemType, Integer itemId, BigDecimal unitPrice, int quantity, BigDecimal subtotal, BigDecimal tax, BigDecimal processingFee, BigDecimal total) {
+    public Invoice(Integer id, String imageUrl, String name, String street, String city, String state, String zipcode, String itemType, Integer itemId, BigDecimal unitPrice, int quantity, BigDecimal subtotal, BigDecimal tax, BigDecimal processingFee, BigDecimal total) {
         this.id = id;
+        this.imageUrl = imageUrl;
         this.name = name;
         this.street = street;
         this.city = city;
@@ -89,6 +93,14 @@ public class Invoice {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {
@@ -198,20 +210,21 @@ public class Invoice {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Invoice)) return false;
         Invoice invoice = (Invoice) o;
-        return quantity == invoice.quantity && Objects.equals(id, invoice.id) && Objects.equals(name, invoice.name) && Objects.equals(street, invoice.street) && Objects.equals(city, invoice.city) && Objects.equals(state, invoice.state) && Objects.equals(zipcode, invoice.zipcode) && Objects.equals(itemType, invoice.itemType) && Objects.equals(itemId, invoice.itemId) && Objects.equals(unitPrice, invoice.unitPrice) && Objects.equals(subtotal, invoice.subtotal) && Objects.equals(tax, invoice.tax) && Objects.equals(processingFee, invoice.processingFee) && Objects.equals(total, invoice.total);
+        return getQuantity() == invoice.getQuantity() && Objects.equals(getId(), invoice.getId()) && Objects.equals(getImageUrl(), invoice.getImageUrl()) && Objects.equals(getName(), invoice.getName()) && Objects.equals(getStreet(), invoice.getStreet()) && Objects.equals(getCity(), invoice.getCity()) && Objects.equals(getState(), invoice.getState()) && Objects.equals(getZipcode(), invoice.getZipcode()) && Objects.equals(getItemType(), invoice.getItemType()) && Objects.equals(getItemId(), invoice.getItemId()) && Objects.equals(getUnitPrice(), invoice.getUnitPrice()) && Objects.equals(getSubtotal(), invoice.getSubtotal()) && Objects.equals(getTax(), invoice.getTax()) && Objects.equals(getProcessingFee(), invoice.getProcessingFee()) && Objects.equals(getTotal(), invoice.getTotal());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, street, city, state, zipcode, itemType, itemId, unitPrice, quantity, subtotal, tax, processingFee, total);
+        return Objects.hash(getId(), getImageUrl(), getName(), getStreet(), getCity(), getState(), getZipcode(), getItemType(), getItemId(), getUnitPrice(), getQuantity(), getSubtotal(), getTax(), getProcessingFee(), getTotal());
     }
 
     @Override
     public String toString() {
         return "Invoice{" +
                 "id=" + id +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", name='" + name + '\'' +
                 ", street='" + street + '\'' +
                 ", city='" + city + '\'' +
