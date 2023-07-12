@@ -56,6 +56,8 @@
                 />
                 <p th:text="'ID: ' + ${itemId}"></p>
                 <h3 th:text="${itemDetail}"></h3>
+                <p th:text="'Quantity: ' + ${quantity}"></p>
+
               </div>
               <div th:case="'Console'" class="console-item">
                 <img
@@ -64,6 +66,8 @@
                 />
                 <p th:text="'ID: ' + ${itemId}"></p>
                 <h3 th:text="${itemDetail}"></h3>
+                <p th:text="'Quantity: ' + ${quantity}"></p>
+
               </div>
               <div th:case="'Tshirt'" class="tshirt-item">
                 <img
@@ -72,6 +76,8 @@
                 />
                 <p th:text="'ID: ' + ${itemId}"></p>
                 <h3 th:text="'Color: ' + ${itemDetail}"></h3>
+                <p th:text="'Quantity: ' + ${quantity}"></p>
+
               </div>
             </div>
           </ul>
@@ -95,7 +101,7 @@
             <label for="state" >State:</label>
             <input type="text" id="state" name="state" maxlength="2" required />
             <label for="zipcode" >Zipcode:</label>
-            <input type="text" id="zipcode" name="zipcode" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required />
+            <input type="text" id="zipcode" name="zipcode" maxlength="5" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required />
           </div>
           <div class="payment-info">
             <h3>Item Information</h3>

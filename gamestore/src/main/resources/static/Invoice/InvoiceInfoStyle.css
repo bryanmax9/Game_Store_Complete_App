@@ -26,6 +26,12 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.main-content img {
+  width: 350px;
+  height: 350px;
 }
 
 .logo {
@@ -37,7 +43,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  width: 80%;
+  width: 50%;
 }
 
 .info-item {
@@ -66,8 +72,8 @@ body {
 }
 
 .long-container {
-  width: 70%;
-  font-size: 20px;
+  width: 80%;
+  font-size: 13px;
   color: #1c3a63;
   font-weight: 600;
   line-height: 1.5;

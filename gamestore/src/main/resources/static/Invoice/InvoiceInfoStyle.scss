@@ -29,6 +29,12 @@ body {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  margin-top: 15px;
+}
+
+.main-content img {
+  width: 350px;
+  height: 350px;
 }
 
 .logo {
@@ -40,7 +46,7 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  width: 80%;
+  width: 50%;
 }
 
 .info-item {
@@ -69,8 +75,8 @@ body {
 }
 
 .long-container {
-  width: 70%; // Adjust as needed
-  font-size: 20px; // Increase font size
+  width: 80%; // Adjust as needed
+  font-size: 13px; // Increase font size
   color: $primary-color; // Change text color
   font-weight: 600; // Make text slightly bold
   line-height: 1.5; // Increase line-height for better readability

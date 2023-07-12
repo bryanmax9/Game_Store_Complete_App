@@ -39,6 +39,11 @@ public class WebController {
         return "./MainPage/index";
     }
 
+    @GetMapping("/About")
+    public String returnAbout(){
+        return "./AboutPage/about";
+    }
+
     @GetMapping("/checkout/{type}/{id}")
     public String returnCheckout(@PathVariable("type") String type, @PathVariable("id") int id, Model model){
         // Based on the type, call the correct service to get the item
@@ -46,6 +51,7 @@ public class WebController {
         String itemDetail = ""; // This will hold the detail (title, model, or size)
         String itemType = ""; // Item category of Console, game or T-Shirt
         String imagen = "";
+
         switch (type) {
             case "game":
                 Game game = serviceLayer.findGame(id);
@@ -53,14 +59,15 @@ public class WebController {
                 itemDetail = game.getTitle();
                 itemType = "Game";
                 imagen = "https://i.imgur.com/9dDFYB9.png";
+                model.addAttribute("quantity", game.getQuantity()); // add this line
                 break;
             case "console":
                 Console console = serviceLayer.findConsole(id);
-                item =console;
+                item = console;
                 itemDetail = console.getModel();
                 itemType = "Console";
                 imagen = "https://i.imgur.com/sVPL9xD.png";
-
+                model.addAttribute("quantity", console.getQuantity()); // add this line
                 break;
             case "tshirt":
                 Tshirt tshirt = serviceLayer.findTshirt(id);
@@ -68,6 +75,7 @@ public class WebController {
                 itemDetail = tshirt.getColor();
                 itemType = "T-Shirt";
                 imagen = "https://i.imgur.com/IMKWUEB.png";
+                model.addAttribute("quantity", tshirt.getQuantity()); // add this line
                 break;
             default:
                 throw new IllegalArgumentException("Invalid type: " + type);

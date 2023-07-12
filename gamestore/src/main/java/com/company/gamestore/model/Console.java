@@ -26,6 +26,8 @@ public class Console {
     @NotEmpty(message = "You must supply a manufacturer")
     private String manufacturer;
 
+
+
     @NotEmpty(message = "You must supply a Memory Amount")
     @Column(name = "memory_amount")
     private String memoryAmount;
