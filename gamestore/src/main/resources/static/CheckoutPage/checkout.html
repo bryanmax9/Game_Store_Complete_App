@@ -1,136 +1,207 @@
+<!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Game Store</title>
-    <link rel="stylesheet" type="text/css" href="/CheckoutPage/checkoutStylesheet.css">
+    <link rel="icon" href="https://i.imgur.com/QxckFLG.png">
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="/CheckoutPage/checkoutStylesheet.css"
+    />
     <!-- Add this line to include the carousel CSS -->
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
 
     <!-- Add this line to include the carousel JS -->
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-</head>
-<body>
-<header>
-    <a href="/" class="logo">
-        <img src="https://i.imgur.com/QxckFLG.png" alt="Logo">
+  </head>
+  <body>
+    <header>
+      <a href="/" class="logo">
+        <img src="https://i.imgur.com/QxckFLG.png" alt="Logo" />
         Wormhole Gaming
-    </a>
-    <nav>
+      </a>
+      <nav>
         <!-- Search bar -->
         <form action="/search" method="get" class="search-form">
-            <input name="q" type="search" class="search-input" placeholder="Search" />
+          <input
+            name="q"
+            type="search"
+            class="search-input"
+            placeholder="Search"
+          />
         </form>
 
         <ul>
-            <li><a href="/" >Home</a></li>
-
+          <li><a href="/">Home</a></li>
         </ul>
-
-    </nav>
-
-</header>
-<main>
-    <section class="container checkout">
+      </nav>
+    </header>
+    <main>
+      <section class="container checkout">
         <h2>Checkout</h2>
         <div class="cart-items">
-            <h3>Your Cart</h3>
-            <ul class="cart-list">
-                <div th:switch="${item.class.simpleName}">
-                    <div th:case="'Game'" class="game-item">
-                        <img src="https://i.imgur.com/9dDFYB9.png" th:alt="${itemDetail}"/>
-                        <p th:text="'ID: ' + ${itemId}"></p>
-                        <h3 th:text="${itemDetail}"></h3>
-
-                    </div>
-                    <div th:case="'Console'" class="console-item">
-                        <img src="https://i.imgur.com/sVPL9xD.png" th:alt="${itemDetail}"/>
-                        <p th:text="'ID: ' + ${itemId}"></p>
-                        <h3 th:text="${itemDetail}"></h3>
-
-                    </div>
-                    <div th:case="'Tshirt'" class="tshirt-item">
-                        <img src="https://i.imgur.com/IMKWUEB.png" th:alt="${itemDetail}"/>
-                        <p th:text="'ID: ' + ${itemId}"></p>
-                        <h3 th:text="'Color: ' + ${itemDetail}"></h3>
-
-                    </div>
-                </div>
-            </ul>
-            <div class="cart-total">
-                <span>Total: </span>
-                <span class="total-price">$<span th:text="${item.price}"></span></span>
+          <h3>Your Cart</h3>
+          <ul class="cart-list">
+            <div th:switch="${item.class.simpleName}">
+              <div th:case="'Game'" class="game-item">
+                <img
+                  src="https://i.imgur.com/9dDFYB9.png"
+                  th:alt="${itemDetail}"
+                />
+                <p th:text="'ID: ' + ${itemId}"></p>
+                <h3 th:text="${itemDetail}"></h3>
+              </div>
+              <div th:case="'Console'" class="console-item">
+                <img
+                  src="https://i.imgur.com/sVPL9xD.png"
+                  th:alt="${itemDetail}"
+                />
+                <p th:text="'ID: ' + ${itemId}"></p>
+                <h3 th:text="${itemDetail}"></h3>
+              </div>
+              <div th:case="'Tshirt'" class="tshirt-item">
+                <img
+                  src="https://i.imgur.com/IMKWUEB.png"
+                  th:alt="${itemDetail}"
+                />
+                <p th:text="'ID: ' + ${itemId}"></p>
+                <h3 th:text="'Color: ' + ${itemDetail}"></h3>
+              </div>
             </div>
+          </ul>
+          <div class="cart-total">
+            <span>Total: </span>
+            <span class="total-price"
+              >$<span th:text="${item.price}"></span
+            ></span>
+          </div>
         </div>
 
         <form action="/saveOurInvoice" method="post" class="checkout-form">
-            <div class="billing-info">
-                <h3>Billing Information</h3>
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="street">Street:</label>
-                <input type="text" id="street" name="street" required>
-                <label for="city">City:</label>
-                <input type="text" id="city" name="city" required>
-                <label for="state">State:</label>
-                <input type="text" id="state" name="state" required>
-                <label for="zipcode">Zipcode:</label>
-                <input type="text" id="zipcode" name="zipcode" required>
-            </div>
-            <div class="payment-info">
-                <h3>Item Information</h3>
-                <label for="itemType">Item Type:</label>
-                <input type="text" id="itemType" name="itemType" th:value="${itemType}" required readonly>
-                <label for="itemDetail">Item Title:</label>
-                <input type="text" id="itemDetail" name="itemDetail" th:value="${itemDetail}" required readonly>
-                <label for="itemId">Item ID: </label>
-                <input type="text" id="itemId" name="itemId" th:value="${itemId}" required readonly>
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" name="quantity" required>
-            </div>
-<!--            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>-->
-            <button type="submit" class="submit-button">Submit Order</button>
+          <div class="billing-info">
+            <h3>Billing Information</h3>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required />
+            <label for="street">Street:</label>
+            <input type="text" id="street" name="street" required />
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" required />
+            <label for="state" >State:</label>
+            <input type="text" id="state" name="state" maxlength="2" required />
+            <label for="zipcode" >Zipcode:</label>
+            <input type="text" id="zipcode" name="zipcode" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required />
+          </div>
+          <div class="payment-info">
+            <h3>Item Information</h3>
+            <label for="itemType">Item Type:</label>
+            <input
+              type="text"
+              id="itemType"
+              name="itemType"
+              th:value="${itemType}"
+              required
+              readonly
+            />
+            <label for="itemDetail">Item Title:</label>
+            <input
+              type="text"
+              id="itemDetail"
+              name="itemDetail"
+              th:value="${itemDetail}"
+              required
+              readonly
+            />
+            <label for="itemId">Item ID: </label>
+            <input
+              type="text"
+              id="itemId"
+              name="itemId"
+              th:value="${itemId}"
+              required
+              readonly
+            />
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"  required />
+          </div>
+          <!--            <input type="hidden" name="_csrf" th:value="${_csrf.token}"/>-->
+          <button type="submit" class="submit-button">Submit Order</button>
         </form>
-    </section>
-</main>
-<script src="checkoutScript.js"></script>
-</body>
-<footer class="footer">
+      </section>
+    </main>
+    <script src="checkoutScript.js"></script>
+  </body>
+  <footer class="footer">
     <div class="footer__logo-box">
-        <img src="https://bryan-tineo-portafolio2.netlify.app/images/bryanmax9_icon.png" alt="Full logo" class="footer__logo" />
+      <img
+        src="https://bryan-tineo-portafolio2.netlify.app/images/bryanmax9_icon.png"
+        alt="Full logo"
+        class="footer__logo"
+      />
     </div>
     <div class="row">
-        <div class="col-1-of-2">
-            <div class="footer__navigation">
-                <ul class="footer__list">
-                    <li class="footer__item">
-                        <a href="https://www.linkedin.com/in/bryan-tineo/" class="footer__link">Company</a>
-                    </li>
-                    <li class="footer__item">
-                        <a href="https://www.linkedin.com/in/bryan-tineo/" class="footer__link">Contact</a>
-                    </li>
-                    <li class="footer__item">
-                        <a href="https://www.linkedin.com/in/bryan-tineo/" class="footer__link">Carrers</a>
-                    </li>
-                    <li class="footer__item">
-                        <a href="https://www.linkedin.com/in/bryan-tineo/" class="footer__link">Privacy policy</a>
-                    </li>
-                    <li class="footer__item">
-                        <a href="https://www.linkedin.com/in/bryan-tineo/" class="footer__link">Terms</a>
-                    </li>
-                </ul>
-            </div>
+      <div class="col-1-of-2">
+        <div class="footer__navigation">
+          <ul class="footer__list">
+            <li class="footer__item">
+              <a
+                href="https://www.linkedin.com/in/bryan-tineo/"
+                class="footer__link"
+                >Company</a
+              >
+            </li>
+            <li class="footer__item">
+              <a
+                href="https://www.linkedin.com/in/bryan-tineo/"
+                class="footer__link"
+                >Contact</a
+              >
+            </li>
+            <li class="footer__item">
+              <a
+                href="https://www.linkedin.com/in/bryan-tineo/"
+                class="footer__link"
+                >Carrers</a
+              >
+            </li>
+            <li class="footer__item">
+              <a
+                href="https://www.linkedin.com/in/bryan-tineo/"
+                class="footer__link"
+                >Privacy policy</a
+              >
+            </li>
+            <li class="footer__item">
+              <a
+                href="https://www.linkedin.com/in/bryan-tineo/"
+                class="footer__link"
+                >Terms</a
+              >
+            </li>
+          </ul>
         </div>
-        <div class="col-1-of-2">
-            <p class="footer__copyright">
-                Built by <a href="https://bryantineo.hashnode.dev/" class="footer__link">Bryan Tineo</a> and <a href="https://www.linkedin.com/in/jessieestrada/" class="footer__link">Jessie Estrada</a> for
-                our Bootcamp at Neflix. Copyright &copy; by Bryan Tineo and Jessie Estrada.
-            </p>
-        </div>
+      </div>
+      <div class="col-1-of-2">
+        <p class="footer__copyright">
+          Built by
+          <a href="https://bryantineo.hashnode.dev/" class="footer__link"
+            >Bryan Tineo</a
+          >
+          and
+          <a
+            href="https://www.linkedin.com/in/jessieestrada/"
+            class="footer__link"
+            >Jessie Estrada</a
+          >
+          for our Bootcamp at Neflix. Copyright &copy; by Bryan Tineo and Jessie
+          Estrada.
+        </p>
+      </div>
     </div>
-</footer>
-
-
+  </footer>
 </html>
-
-

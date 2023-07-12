@@ -45,18 +45,21 @@ public class WebController {
         Object item;
         String itemDetail = ""; // This will hold the detail (title, model, or size)
         String itemType = ""; // Item category of Console, game or T-Shirt
+        String imagen = "";
         switch (type) {
             case "game":
                 Game game = serviceLayer.findGame(id);
                 item = game;
                 itemDetail = game.getTitle();
                 itemType = "Game";
+                imagen = "https://i.imgur.com/9dDFYB9.png";
                 break;
             case "console":
                 Console console = serviceLayer.findConsole(id);
                 item =console;
                 itemDetail = console.getModel();
                 itemType = "Console";
+                imagen = "https://i.imgur.com/sVPL9xD.png";
 
                 break;
             case "tshirt":
@@ -64,6 +67,7 @@ public class WebController {
                 item = tshirt;
                 itemDetail = tshirt.getColor();
                 itemType = "T-Shirt";
+                imagen = "https://i.imgur.com/IMKWUEB.png";
                 break;
             default:
                 throw new IllegalArgumentException("Invalid type: " + type);
@@ -73,6 +77,10 @@ public class WebController {
         model.addAttribute("itemId", id);
         model.addAttribute("itemType", itemType);
         model.addAttribute("itemDetail", itemDetail);
+
+        model.addAttribute("imageUrl",imagen);
+        System.out.println(model);
+
         return "./CheckoutPage/checkout";
     }
 

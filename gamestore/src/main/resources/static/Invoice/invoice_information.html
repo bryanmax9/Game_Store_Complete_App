@@ -1,78 +1,47 @@
+<!DOCTYPE html>
 <html xmlns:th="https://thymeleaf.org">
 <head>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
-
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
-
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
-
-        th {
-            background-color: #333;
-            color: white;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .custom-button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .button-container {
-            text-align: center;
-            margin: 20px;
-        }
-    </style>
+  <title>Invoice Page</title>
+  <link rel="icon" href="https://i.imgur.com/QxckFLG.png">
+  <link rel="stylesheet" href="/Invoice/InvoiceInfoStyle.css" />
 </head>
 <body>
+<div class="container">
+  <div class="header">
+    <p>Invoice</p>
+    <p class="invoice-title" th:text="'#' + ${invoice.id}"></p>
+  </div>
+  <div class="main-content">
+    <div class="logo">
+      <div class="logo">
+        <img th:src="${invoice.itemType == 'Game' ? 'https://i.imgur.com/9dDFYB9.png' :
+                   invoice.itemType == 'Console' ? 'https://i.imgur.com/sVPL9xD.png' :
+                   'https://i.imgur.com/IMKWUEB.png'}" alt="Logo" />
+      </div>
 
-<table>
-    <tr>
-        <th>Invoice ID</th>
-        <th>Customer Name</th>
-        <th>Shipping Address</th>
-        <th>Item ID</th>
-        <th>Quantity</th>
-        <th>Total</th>
-    </tr>
-    <tr>
-        <td th:text="${invoice.id}"></td>
-        <td th:text="${invoice.name}"></td>
-        <td><span th:text="${invoice.street}"></span>, <span th:text="${invoice.city}"></span>, <span th:text="${invoice.state}"></span> <span th:text="${invoice.zipcode}"></span></td>
-        <td th:text="${invoice.itemId}"></td>
-        <td th:text="${invoice.quantity}"></td>
-        <td th:text="${invoice.total}"></td>
-    </tr>
-</table>
-<div class="button-container">
-    <button class="custom-button"><a href="/">Return main page</a></button>
+
+    </div>
+
+    <div class="info-container">
+
+      <div class="info-item" th:text="'Customer Name: ' +${invoice.name}"></div>
+      <div class="info-item" th:text="'Address: ' +${invoice.street} + ' ' + ${invoice.city}"></div>
+      <div class="info-item" th:text="'Item ID: ' +${invoice.itemId}"></div>
+      <div class="info-item" th:text="'Item: ' +${invoice.itemType}"></div>
+      <div class="info-item" th:text="'Quantity: '+${invoice.quantity}"></div>
+      <div class="info-item" th:text="'Total Order: '+${invoice.total}"></div>
+    </div>
+  </div>
+  <div class="button-container">
+    <div class="long-container">
+      <p>Thank you for your purchase! We hope you enjoy your new item. Your support keeps Wormhole Gaming thriving. We appreciate you being part of our gaming community! :^)
+      </p>
+    </div>
+    <div class="circle-logo">
+      <img src="https://i.imgur.com/QxckFLG.png" alt="Logo" />
+    </div>
+  </div>
+  <a href="/" class="home-link">Go to Homepage</a>
 </div>
 </body>
 </html>
-
-
