@@ -44,6 +44,7 @@ body {
   border-radius: 16px;
   backdrop-filter: blur(7px);
   border: 2px solid rgba(255, 255, 255, 0.2);
+  filter: drop-shadow(0px 2px 3px #000);
 }
 
 .form-box {
@@ -59,6 +60,7 @@ body {
   text-align: center;
   font-size: 38px;
   color: #ffd700;
+  filter: drop-shadow(0px 2px 3px #000);
 }
 
 .form-box .input-box {

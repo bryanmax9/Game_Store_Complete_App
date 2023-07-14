@@ -20,7 +20,7 @@ public class Game {
     @Column(name = "game_id")
     private Integer gameId;
 
-    @Column(name = "imageUrl")
+    @Column(name = "image_url")
     private String imageUrl;
 
     @NotEmpty(message = "You must supply a title.")

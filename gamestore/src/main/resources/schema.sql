@@ -73,7 +73,7 @@ create table game (
                       price decimal(5, 2) not null,
                       studio varchar(50) not null,
                       quantity int,
-                      imageUrl varchar(255) -- added this line
+                      image_url varchar(255) -- added this line
 );
 
 create table console (
@@ -84,7 +84,7 @@ create table console (
                          processor varchar(20),
                          price decimal(5, 2) not null,
                          quantity int not null,
-                         imageUrl varchar(255) -- added this line
+                         image_url varchar(255) -- added this line
 );
 
 create table tshirt (

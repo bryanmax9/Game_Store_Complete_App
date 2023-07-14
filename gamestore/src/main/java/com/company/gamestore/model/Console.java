@@ -26,7 +26,7 @@ public class Console {
     @NotEmpty(message = "You must supply a manufacturer")
     private String manufacturer;
 
-    @Column(name = "imageUrl")
+    @Column(name = "image_url")
     private String imageUrl;
 
     @NotEmpty(message = "You must supply a Memory Amount")
