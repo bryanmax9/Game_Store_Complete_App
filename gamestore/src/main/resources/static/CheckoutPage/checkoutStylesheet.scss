@@ -274,7 +274,7 @@ header.scrolled {
 
 .item-image {
   width: 100%;
-  height: auto;
+  max-height: 390px;
   margin-bottom: 20px;
   object-fit: contain; /* Adjust the size of the image */
 }

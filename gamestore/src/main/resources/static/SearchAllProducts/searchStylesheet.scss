@@ -277,8 +277,8 @@ body {
   transition: 0.3s ease-in-out;
   
   img {
-    width: 100%;
-    height: auto;
+    width: 230px;
+    height: 290px;
     border-radius: 5px;
     margin-bottom: 10px;
   }
@@ -302,6 +302,8 @@ body {
 //Checkoutt button style
 button.checkout-button {
   padding: 10px 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
   background-color: #4caf50;
   color: white;
   border: none;
@@ -481,8 +483,8 @@ button.checkout-button:hover {
 }
 
 .console-item img {
-  width: 100%;
-  height: auto;
+  width: 230px;
+  height: 290px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -514,8 +516,8 @@ button.checkout-button:hover {
 }
 
 .tshirt-item img {
-  width: 100%;
-  height: auto;
+  width: 230px;
+  height: 290px;
   border-radius: 5px;
   margin-bottom: 10px;
 }

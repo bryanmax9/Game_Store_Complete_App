@@ -41,7 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
       clickable: true,
     },
     autoplay: {
-      delay: 3000, // Auto transitions every 3 seconds
+      delay: 7000, // Auto transitions every 3 seconds
       disableOnInteraction: false, // Autoplay will not stop after user interactions
     },
     loop: true, // Enables infinite loop mode
