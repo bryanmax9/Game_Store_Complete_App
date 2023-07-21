@@ -46,7 +46,7 @@
             <!-- Hardcoded image URL -->
             <h3 th:text="${game.title}"></h3>
             <p th:text="'Price: $' + ${game.price}"></p>
-            <p th:text="'Quantity: ' +${game.quantity}"></p>
+
             <button
               class="checkout-button"
               th:onclick="'window.location.href=\'/checkout/game/' + ${game.gameId} + '\''"

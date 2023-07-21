@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -23,7 +24,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -51,7 +51,8 @@ public class WebController {
         String itemDetail = ""; // This will hold the detail (title, model, or size)
         String itemType = ""; // Item category of Console, game or T-Shirt
         String imageUrl = ""; // This will hold the imageUrl
-
+        String description = ""; //Hold description
+        BigDecimal price = BigDecimal.ZERO;
         switch (type) {
             case "game":
                 Game game = serviceLayer.findGame(id);
@@ -59,7 +60,10 @@ public class WebController {
                 itemDetail = game.getTitle();
                 imageUrl = game.getImageUrl();
                 itemType = "Game";
+                description = game.getDescription();
+                price = game.getPrice();
                 model.addAttribute("quantity", game.getQuantity()); // add this line
+                
                 break;
             case "console":
                 Console console = serviceLayer.findConsole(id);
@@ -67,6 +71,8 @@ public class WebController {
                 itemDetail = console.getModel();
                 imageUrl = console.getImageUrl();
                 itemType = "Console";
+                description = console.getProcessor();
+                price = console.getPrice();
                 model.addAttribute("quantity", console.getQuantity()); // add this line
                 break;
             case "tshirt":
@@ -75,6 +81,8 @@ public class WebController {
                 itemDetail = tshirt.getColor();
                 imageUrl = "https://i.imgur.com/IMKWUEB.png";
                 itemType = "T-Shirt";
+                description = tshirt.getDescription();
+                price = tshirt.getPrice();
                 model.addAttribute("quantity", tshirt.getQuantity()); // add this line
                 break;
             default:
@@ -85,7 +93,9 @@ public class WebController {
         model.addAttribute("itemId", id);
         model.addAttribute("itemType", itemType);
         model.addAttribute("itemDetail", itemDetail);
-        model.addAttribute("imageUrl", imageUrl); // Add this line
+        model.addAttribute("imageUrl", imageUrl);
+        model.addAttribute("description", description);
+        model.addAttribute("price", price);
 
         System.out.println(model);
 

@@ -33,8 +33,18 @@ body {
 }
 
 .main-content img {
-  width: 350px;
+  width: auto;
   height: 350px;
+  border: 1px solid black;
+  border-radius: 1%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  transition: all 0.5s ease; /* apply transition here */
+}
+
+.main-content img:hover {
+  border: 3px solid black;
+  transform: translateY(3px);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 1);
 }
 
 .logo {
@@ -67,11 +77,17 @@ body {
   overflow: hidden;
   border: 3px solid $secondary-color; // Added border
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); // Added shadow
+  transition: all 0.5s ease;
 }
 
 .circle-logo img {
   width: 100%;
   height: 100%;
+}
+.circle-logo:hover {
+  width: 90px; // Increased size
+  height: 90px; // Increased size
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
 }
 
 .long-container {
@@ -85,6 +101,12 @@ body {
   background-color: #f9f9f9; // Light background color
   border: 1px solid $secondary-color; // Add border
   border-radius: 10px; // Round the corners
+  transition: all 0.5s ease;
+}
+.long-container:hover {
+  transform: scale(
+    1.05
+  ); /* Add this line - it enlarges the element slightly on hover */
 }
 
 .invoice-title {

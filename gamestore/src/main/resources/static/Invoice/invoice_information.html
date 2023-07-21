@@ -11,14 +11,13 @@
         <div class="circle-logo">
           <img src="https://i.imgur.com/QxckFLG.png" alt="Logo" />
         </div>
-        <p>Invoice</p>
+        <h2>Invoice</h2>
         <p class="invoice-title" th:text="'#' + ${invoice.id}"></p>
       </div>
       <div class="main-content">
         <div class="logo">
           <div class="logo">
             <img th:src="${invoice.imageUrl}" alt="Logo" />
-
           </div>
         </div>
 
@@ -37,10 +36,8 @@
             class="info-item"
             th:text="'Quantity: '+${invoice.quantity}"
           ></div>
-          <div
-            class="info-item"
-            th:text="'Total Order: '+${invoice.total} + '$'"
-          ></div>
+          <div class="info-item" th:text="'Total Order: $'+${invoice.total} "></div>
+
         </div>
       </div>
       <div class="button-container">

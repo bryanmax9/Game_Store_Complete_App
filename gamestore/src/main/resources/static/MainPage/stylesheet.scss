@@ -137,8 +137,8 @@ header ul li a.active {
 .sliding-menu {
   position: fixed;
   top: 0;
-  left: -300px; // The menu is initially hidden on the left side
-  width: 300px;
+  left: -500px; // The menu is initially hidden on the left side
+  width: 500px;
   height: 100%;
   background: $primary-color;
   padding: 30px;
@@ -146,7 +146,7 @@ header ul li a.active {
   flex-direction: column;
   justify-content: center;
   z-index: 99999;
-  transition: left 0.3s ease-in-out; // The transition is now applied to the left property
+  transition: left 1s ease; // The transition is now applied to the left property
   box-shadow: 10px 0 20px rgba(0, 0, 0, 0.2); // The shadow is now on the right side
 }
 
@@ -157,7 +157,7 @@ header ul li a.active {
 .sliding-menu ul {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   color: $text-color;
 }
 
@@ -183,7 +183,7 @@ header ul li a.active {
 
 //In order for our sticky navigation to get background color when moved:
 header.scrolled {
-  background-color: rgba($sticky-bg-color, 0.5);
+  background-color: rgba($sticky-bg-color, 0.8);
 }
 
 //Search bar of the navigation
@@ -265,7 +265,6 @@ header.scrolled {
     &--1 {
       grid-row: 1 / 5;
       grid-column: 1 / 5;
-      
     }
 
     &--2 {
@@ -844,8 +843,8 @@ header.scrolled {
   .sliding-menu {
     position: fixed;
     top: 0;
-    left: -300px; // The menu is initially hidden on the left side
-    width: 300px;
+    left: -500px; // The menu is initially hidden on the left side
+    width: 500px;
     height: 100%;
     background: $primary-color;
     padding: 30px;
@@ -853,7 +852,7 @@ header.scrolled {
     flex-direction: column;
     justify-content: center;
     z-index: 99999;
-    transition: left 0.3s ease-in-out; // The transition is now applied to the left property
+    transition: left 1s ease; // The transition is now applied to the left property
     box-shadow: 10px 0 20px rgba(0, 0, 0, 0.2); // The shadow is now on the right side
   }
 
@@ -864,7 +863,7 @@ header.scrolled {
   .sliding-menu ul {
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     color: $text-color;
   }
 
@@ -890,7 +889,7 @@ header.scrolled {
 
   //In order for our sticky navigation to get background color when moved:
   header.scrolled {
-    background-color: rgba($sticky-bg-color, 0.5);
+    background-color: rgba($sticky-bg-color, 0.8);
   }
 
   //Search bar of the navigation
@@ -923,35 +922,66 @@ header.scrolled {
     margin: 50px auto;
     padding: 50px 20px;
   }
+  // Carousel
+  .carousel-section {
+    margin: 50px 0;
+  }
 
-  /* Add media queries for responsiveness */
-  @media screen and (max-width: 1400px) {
-    .container {
-      max-width: 1200px;
+  .swiper-container {
+    width: 100%;
+    height: 50vw; // Using viewport width for height makes the carousel more responsive
+  }
+
+  .swiper-slide {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    // Adding overlay and text
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    &:hover .overlay {
+      opacity: 1;
     }
   }
 
-  @media screen and (max-width: 1200px) {
-    .container {
-      max-width: 960px;
-    }
-  }
+  .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
 
-  @media screen and (max-width: 960px) {
-    .container {
-      max-width: 720px;
-    }
-  }
-
-  @media screen and (max-width: 720px) {
-    .container {
-      max-width: 540px;
-    }
-  }
-
-  @media screen and (max-width: 540px) {
-    .container {
-      padding: 50px 10px; /* Adjust padding for smaller screens */
+    img {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      object-fit: cover; // This will make sure the image always covers the slide
+      max-width: 100%;
+      max-height: 100%;
     }
   }
 
@@ -1079,36 +1109,6 @@ header.scrolled {
       }
     }
   }
-
-  // Carousel
-.carousel-section {
-  margin-top: 50px;
-  margin-bottom: 50px;
-}
-
-.swiper-container {
-  width: 100%;
-  height: 800px; // Adjust the height to your needs
-}
-
-.swiper-slide {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden; // Ensure the image doesn't overflow the slide
-
-  img {
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    max-width: 100%; 
-    max-height: 100%;
-    transform: translate(-50%, -50%);
-    object-fit: contain; 
-    object-position: center;
-  }
-}
 
   //Featured Categories
   .featured-categories {
@@ -1268,5 +1268,46 @@ header.scrolled {
         float: none;
       }
     }
+  }
+}
+
+/* Add media queries for responsiveness */
+@media screen and (max-width: 1400px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media screen and (max-width: 960px) {
+  .container {
+    max-width: 720px;
+  }
+
+  .carousel-section {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 720px) {
+  .container {
+    max-width: 540px;
+  }
+  .carousel-section {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .container {
+    padding: 50px 10px; /* Adjust padding for smaller screens */
+  }
+  .carousel-section {
+    display: none;
   }
 }
