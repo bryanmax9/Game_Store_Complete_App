@@ -43,14 +43,12 @@
           <div th:each="console : ${consoles}" class="console-item">
             <img th:src="@{${console.imageUrl}}" th:alt="${console.model}" />
             <!-- Hardcoded image URL -->
-            <p th:text="'ID: ' + ${console.consoleId}"></p>
             <h3 th:text="${console.model}"></h3>
             <p th:text="'Price: $' + ${console.price}"></p>
             <p th:text="'Memory Amount: ' +${console.memoryAmount}"></p>
-            <p th:text="'Quantity: ' + ${console.quantity}"></p>
             <button
-              class="checkout-button"
-              onclick="location.href='/checkout';"
+                    class="checkout-button"
+                    th:onclick="'window.location.href=\'/checkout/console/' + ${console.consoleId} + '\''"
             >
               Check Out
             </button>

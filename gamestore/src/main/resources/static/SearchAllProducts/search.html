@@ -44,10 +44,8 @@
             <img th:src="@{${game.imageUrl}}" th:alt="${game.title}" />
 
             <!-- Hardcoded image URL -->
-            <p th:text="'ID: ' + ${game.gameId}"></p>
             <h3 th:text="${game.title}"></h3>
             <p th:text="'Price: $' + ${game.price}"></p>
-            <p th:text="'Description: ' + ${game.description}"></p>
             <p th:text="'Quantity: ' +${game.quantity}"></p>
             <button
               class="checkout-button"
@@ -62,11 +60,9 @@
             <img th:src="@{${console.imageUrl}}" th:alt="${console.model}" />
 
             <!-- Hardcoded image URL -->
-            <p th:text="'ID: ' + ${console.consoleId}"></p>
             <h3 th:text="${console.model}"></h3>
             <p th:text="'Price: $' + ${console.price}"></p>
             <p th:text="'Memory Amount: ' +${console.memoryAmount}"></p>
-            <p th:text="'Quantity: ' + ${console.quantity}"></p>
             <button
               class="checkout-button"
               th:onclick="'window.location.href=\'/checkout/console/' + ${console.consoleId} + '\''"
@@ -82,12 +78,9 @@
               th:alt="${tshirt.tShirtId}"
             />
             <!-- Hardcoded image URL -->
-            <p th:text="'ID: ' + ${tshirt.tShirtId}"></p>
             <h3 th:text="'Color: ' + ${tshirt.color}"></h3>
             <p th:text="'Price: $' + ${tshirt.price}"></p>
             <p th:text="'Size: ' + ${tshirt.size}"></p>
-            <p th:text="'Description: ' + ${tshirt.description}"></p>
-            <p th:text="'Quantity: ' + ${tshirt.quantity}"></p>
             <button
               class="checkout-button"
               th:onclick="'window.location.href=\'/checkout/tshirt/' + ${tshirt.tShirtId} + '\''"

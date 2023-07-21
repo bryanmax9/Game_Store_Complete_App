@@ -270,11 +270,12 @@ body {
 .game-item {
   width: 250px;
   padding: 10px;
-  background-color: #34495e;
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   text-align: center;
-
+  transition: 0.3s ease-in-out;
+  
   img {
     width: 100%;
     height: auto;
@@ -292,6 +293,12 @@ body {
   }
 }
 
+.game-item:hover{
+  border-radius: 10px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 2);
+  transform: translateY(-2%);
+  cursor: pointer;
+}
 //Checkoutt button style
 button.checkout-button {
   padding: 10px 20px;
@@ -466,10 +473,11 @@ button.checkout-button:hover {
 .console-item {
   width: 250px;
   padding: 10px;
-  background-color: #34495e;
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   text-align: center;
+  transition: 0.3s ease-in-out;
 }
 
 .console-item img {
@@ -487,15 +495,22 @@ button.checkout-button:hover {
 .console-item p {
   font-size: 14px;
 }
+.console-item:hover{
+  border-radius: 10px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 2);
+  transform: translateY(-2%);
+  cursor: pointer;
+}
 
 //Style for Tshirt
 .tshirt-item {
   width: 250px;
   padding: 10px;
-  background-color: #34495e;
+  background-color: rgba(255, 255, 255, 0.15);
   border-radius: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   text-align: center;
+  transition: 0.3s ease-in-out;
 }
 
 .tshirt-item img {
@@ -512,4 +527,10 @@ button.checkout-button:hover {
 
 .tshirt-item p {
   font-size: 14px;
+}
+.tshirt-item:hover{
+  border-radius: 10px;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 2);
+  transform: translateY(-2%);
+  cursor: pointer;
 }

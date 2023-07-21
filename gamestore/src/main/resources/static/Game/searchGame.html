@@ -43,14 +43,11 @@
           <div th:each="game : ${games}" class="game-item">
             <img th:src="@{${game.imageUrl}}" th:alt="${game.title}" />
             <!-- Hardcoded image URL -->
-            <p th:text="'ID: ' + ${game.gameId}"></p>
             <h3 th:text="${game.title}"></h3>
             <p th:text="'Price: $' + ${game.price}"></p>
-            <p th:text="'Description: ' + ${game.description}"></p>
-            <p th:text="'Quantity: ' +${game.quantity}"></p>
             <button
-              class="checkout-button"
-              onclick="location.href='/checkout';"
+                    class="checkout-button"
+                    th:onclick="'window.location.href=\'/checkout/game/' + ${game.gameId} + '\''"
             >
               Check Out
             </button>

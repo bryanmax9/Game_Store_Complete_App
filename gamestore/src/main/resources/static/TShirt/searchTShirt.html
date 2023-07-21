@@ -46,15 +46,12 @@
               th:alt="${tshirt.tShirtId}"
             />
             <!-- Hardcoded image URL -->
-            <p th:text="'ID: ' + ${tshirt.tShirtId}"></p>
             <h3 th:text="'Color: ' + ${tshirt.color}"></h3>
             <p th:text="'Price: $' + ${tshirt.price}"></p>
             <p th:text="'Size: ' + ${tshirt.size}"></p>
-            <p th:text="'Description: ' + ${tshirt.description}"></p>
-            <p th:text="'Quantity: ' + ${tshirt.quantity}"></p>
             <button
-              class="checkout-button"
-              onclick="location.href='/checkout';"
+                    class="checkout-button"
+                    th:onclick="'window.location.href=\'/checkout/tshirt/' + ${tshirt.tShirtId} + '\''"
             >
               Check Out
             </button>
