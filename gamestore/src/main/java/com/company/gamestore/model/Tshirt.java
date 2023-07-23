@@ -22,6 +22,10 @@ public class Tshirt {
     @NotEmpty(message = "You must supply a size.")
     private String size;
 
+    @NotEmpty(message = "You must supply a YouTube Video ID")
+    @Column(name = "youtube_id")
+    private String youtubeId;
+
     @NotEmpty(message = "You must supply a color.")
     private String color;
 
@@ -37,9 +41,11 @@ public class Tshirt {
     public Tshirt(){
 
     }
-    public Tshirt(int tShirtId, String size, String color, String description, BigDecimal price, int quantity) {
+
+    public Tshirt(int tShirtId, String size, String youtubeId, String color, String description, BigDecimal price, int quantity) {
         this.tShirtId = tShirtId;
         this.size = size;
+        this.youtubeId = youtubeId;
         this.color = color;
         this.description = description;
         this.price = price;
@@ -60,6 +66,14 @@ public class Tshirt {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public String getYoutubeId() {
+        return youtubeId;
+    }
+
+    public void setYoutubeId(String youtubeId) {
+        this.youtubeId = youtubeId;
     }
 
     public String getColor() {
@@ -97,14 +111,14 @@ public class Tshirt {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Tshirt)) return false;
         Tshirt tshirt = (Tshirt) o;
-        return tShirtId == tshirt.tShirtId && quantity == tshirt.quantity && Objects.equals(size, tshirt.size) && Objects.equals(color, tshirt.color) && Objects.equals(description, tshirt.description) && Objects.equals(price, tshirt.price);
+        return gettShirtId() == tshirt.gettShirtId() && getQuantity() == tshirt.getQuantity() && Objects.equals(getSize(), tshirt.getSize()) && Objects.equals(getYoutubeId(), tshirt.getYoutubeId()) && Objects.equals(getColor(), tshirt.getColor()) && Objects.equals(getDescription(), tshirt.getDescription()) && Objects.equals(getPrice(), tshirt.getPrice());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(tShirtId, size, color, description, price, quantity);
+        return Objects.hash(gettShirtId(), getSize(), getYoutubeId(), getColor(), getDescription(), getPrice(), getQuantity());
     }
 
     @Override
@@ -112,6 +126,7 @@ public class Tshirt {
         return "Tshirt{" +
                 "tShirtId=" + tShirtId +
                 ", size='" + size + '\'' +
+                ", youtubeId='" + youtubeId + '\'' +
                 ", color='" + color + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +

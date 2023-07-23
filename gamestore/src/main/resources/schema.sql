@@ -60,7 +60,7 @@ create table tax (
 
 
 
--- New Schema with URL images implemented
+-- New Schema with URL images and video implemented
 drop database if exists game_store;
 create database game_store;
 use game_store;
@@ -73,7 +73,8 @@ create table game (
                       price decimal(5, 2) not null,
                       studio varchar(50) not null,
                       quantity int,
-                      image_url varchar(255) -- added this line
+                      image_url varchar(255),
+                      youtube_id varchar(50) not null
 );
 
 create table console (
@@ -84,7 +85,8 @@ create table console (
                          processor varchar(20),
                          price decimal(5, 2) not null,
                          quantity int not null,
-                         image_url varchar(255) -- added this line
+                         image_url varchar(255),
+                         youtube_id varchar(50) not null
 );
 
 create table tshirt (
@@ -93,8 +95,10 @@ create table tshirt (
                         color varchar(20) not null,
                         description varchar(255) not null,
                         price decimal(5,2) not null,
-                        quantity int not null
+                        quantity int not null,
+                        youtube_id varchar(50) not null
 );
+
 
 create table invoice (
                          invoice_id int primary key auto_increment,

@@ -290,7 +290,7 @@ header.scrolled {
     width: 100%;
     height: 100%;
     // object fit is in order for the image not to overflow, but for object fit to work we have to manually se the width and height of the image
-    object-fit: contain;
+    object-fit: cover;
 
     display: block;
   }
@@ -953,14 +953,30 @@ header.scrolled {
       height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
       display: flex;
+      flex-direction: column;
       justify-content: center;
-      align-items: center;
+      align-items: flex-start; //in order to align to the left
       opacity: 0;
       transition: opacity 0.5s ease;
       color: #fff;
-      text-align: center;
+      text-align: left; //aligning to the left
       padding: 20px;
       box-sizing: border-box;
+
+      // Style for the title of image
+      h2 {
+        margin-bottom: 10px;
+        font-size: 2em; // make more prominent title
+        text-transform: uppercase; //into uppercase
+        font-weight: bold; //make title bolkd
+        max-width: 70%; //limit width
+      }
+
+      p {
+        line-height: 1.5; //increas height for readibility
+        font-size: 1.2em; //paragraph slightly larger
+        max-width: 50%; //limit width
+      }
     }
 
     &:hover .overlay {
@@ -1274,32 +1290,84 @@ header.scrolled {
 /* Add media queries for responsiveness */
 @media screen and (max-width: 1400px) {
   .container {
-    max-width: 1200px;
+    max-width: 1500px;
+  }
+  // Category-box
+  .category-box {
+    width: 400px; // Set the desired width
+    height: 250px; // Set the desired height
   }
 }
 
 @media screen and (max-width: 1200px) {
   .container {
-    max-width: 960px;
+    max-width: 1200px;
+  }
+  //Featured Categories
+  .featured-categories__grid {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+
+  // Category-box
+  .category-box {
+    width: 700px; // Set the desired width
+    height: 350px; // Set the desired height
+  }
+  // Top Brands
+  .top-brands__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
   }
 }
 
 @media screen and (max-width: 960px) {
   .container {
-    max-width: 720px;
+    max-width: 1000px;
   }
 
+  //Carousel
   .carousel-section {
     display: none;
+  }
+
+  //Category-box
+  .category-box {
+    width: 500px; // Set the desired width
+    height: 250px; // Set the desired height
+  }
+
+  //GALLERY
+
+  .gallery {
+    &__img {
+      // object fit is in order for the image not to overflow, but for object fit to work we have to manually se the width and height of the image
+      object-fit: cover;
+    }
+  }
+  // Top Brands
+  .top-brands__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
   }
 }
 
 @media screen and (max-width: 720px) {
   .container {
-    max-width: 540px;
+    max-width: 700px;
   }
+  //Carousel
   .carousel-section {
     display: none;
+  }
+
+  // Top Brands
+  .top-brands__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
   }
 }
 
@@ -1309,5 +1377,13 @@ header.scrolled {
   }
   .carousel-section {
     display: none;
+  }
+
+  // Top Brands
+
+  .top-brands__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
   }
 }

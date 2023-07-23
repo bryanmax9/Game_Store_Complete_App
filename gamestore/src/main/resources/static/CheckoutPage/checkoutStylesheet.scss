@@ -271,6 +271,40 @@ header.scrolled {
   font-size: 1.5em; /* Increase the font size */
   color: #333; /* Dark text color */
 }
+.item-video {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  padding-top: 56.25%; /* for 16:9 aspect ratio */
+}
+
+.item-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#previewButtons button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  background-color: $secondary-color;
+  color: white; /* White text */
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s; /* Transition effect */
+  border-radius: 4px;
+}
+
+#previewButtons button:hover {
+  background-color: white; /* White background */
+  color: black; /* Black text */
+}
 
 .item-image {
   width: 100%;
@@ -322,6 +356,8 @@ header.scrolled {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
 
     .billing-info,
     .payment-info {

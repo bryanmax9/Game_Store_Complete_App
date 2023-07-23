@@ -53,6 +53,7 @@ public class WebController {
         String imageUrl = ""; // This will hold the imageUrl
         String description = ""; //Hold description
         BigDecimal price = BigDecimal.ZERO;
+        String urlTrailerID = "";
         switch (type) {
             case "game":
                 Game game = serviceLayer.findGame(id);
@@ -62,6 +63,7 @@ public class WebController {
                 itemType = "Game";
                 description = game.getDescription();
                 price = game.getPrice();
+                urlTrailerID = game.getYoutubeId();
                 model.addAttribute("quantity", game.getQuantity()); // add this line
                 
                 break;
@@ -73,6 +75,7 @@ public class WebController {
                 itemType = "Console";
                 description = console.getProcessor();
                 price = console.getPrice();
+                urlTrailerID = console.getYoutubeId();
                 model.addAttribute("quantity", console.getQuantity()); // add this line
                 break;
             case "tshirt":
@@ -83,6 +86,7 @@ public class WebController {
                 itemType = "T-Shirt";
                 description = tshirt.getDescription();
                 price = tshirt.getPrice();
+                urlTrailerID = tshirt.getYoutubeId();
                 model.addAttribute("quantity", tshirt.getQuantity()); // add this line
                 break;
             default:
@@ -96,6 +100,7 @@ public class WebController {
         model.addAttribute("imageUrl", imageUrl);
         model.addAttribute("description", description);
         model.addAttribute("price", price);
+        model.addAttribute("urlTrailerID", urlTrailerID);
 
         System.out.println(model);
 

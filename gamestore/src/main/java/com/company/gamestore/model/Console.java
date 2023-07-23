@@ -23,6 +23,10 @@ public class Console {
     @NotEmpty(message = "You must supply a Model")
     private String model;
 
+    @NotEmpty(message = "You must supply a YouTube Video ID")
+    @Column(name = "youtube_id")
+    private String youtubeId;
+
     @NotEmpty(message = "You must supply a manufacturer")
     private String manufacturer;
 
@@ -46,9 +50,10 @@ public class Console {
 
     }
 
-    public Console(int consoleId, String model, String manufacturer, String imageUrl, String memoryAmount, String processor, BigDecimal price, int quantity) {
+    public Console(int consoleId, String model, String youtubeId, String manufacturer, String imageUrl, String memoryAmount, String processor, BigDecimal price, int quantity) {
         this.consoleId = consoleId;
         this.model = model;
+        this.youtubeId = youtubeId;
         this.manufacturer = manufacturer;
         this.imageUrl = imageUrl;
         this.memoryAmount = memoryAmount;
@@ -71,6 +76,14 @@ public class Console {
 
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public String getYoutubeId() {
+        return youtubeId;
+    }
+
+    public void setYoutubeId(String youtubeId) {
+        this.youtubeId = youtubeId;
     }
 
     public String getManufacturer() {
@@ -126,12 +139,12 @@ public class Console {
         if (this == o) return true;
         if (!(o instanceof Console)) return false;
         Console console = (Console) o;
-        return getConsoleId() == console.getConsoleId() && getQuantity() == console.getQuantity() && Objects.equals(getModel(), console.getModel()) && Objects.equals(getManufacturer(), console.getManufacturer()) && Objects.equals(getImageUrl(), console.getImageUrl()) && Objects.equals(getMemoryAmount(), console.getMemoryAmount()) && Objects.equals(getProcessor(), console.getProcessor()) && Objects.equals(getPrice(), console.getPrice());
+        return getConsoleId() == console.getConsoleId() && getQuantity() == console.getQuantity() && Objects.equals(getModel(), console.getModel()) && Objects.equals(getYoutubeId(), console.getYoutubeId()) && Objects.equals(getManufacturer(), console.getManufacturer()) && Objects.equals(getImageUrl(), console.getImageUrl()) && Objects.equals(getMemoryAmount(), console.getMemoryAmount()) && Objects.equals(getProcessor(), console.getProcessor()) && Objects.equals(getPrice(), console.getPrice());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getConsoleId(), getModel(), getManufacturer(), getImageUrl(), getMemoryAmount(), getProcessor(), getPrice(), getQuantity());
+        return Objects.hash(getConsoleId(), getModel(), getYoutubeId(), getManufacturer(), getImageUrl(), getMemoryAmount(), getProcessor(), getPrice(), getQuantity());
     }
 
     @Override
@@ -139,6 +152,7 @@ public class Console {
         return "Console{" +
                 "consoleId=" + consoleId +
                 ", model='" + model + '\'' +
+                ", youtubeId='" + youtubeId + '\'' +
                 ", manufacturer='" + manufacturer + '\'' +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", memoryAmount='" + memoryAmount + '\'' +

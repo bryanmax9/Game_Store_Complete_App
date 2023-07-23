@@ -45,12 +45,32 @@
       <section class="container checkout">
         <div class="container">
           <div class="left">
-            <h2 class="item-title" th:text="${itemDetail}"></h2>
-            <img class="item-image" th:src="${imageUrl}" alt="${itemDetail}" />
-            <p class="item-description" th:text="${description}"></p>
-            <p class="item-price" th:text="'$' + ${price}"></p>
-            <p class="item-quantity" th:text="${quantity} + ' available'"></p>
+            <div id="mainContent">
+              <h2 class="item-title" th:text="${itemDetail}"></h2>
+              <img
+                id="itemImage"
+                class="item-image"
+                th:src="${imageUrl}"
+                alt="${itemDetail}"
+                style="display: block"
+              />
+              <div id="itemVideo" class="item-video" style="display: none">
+                <iframe
+                  width="420"
+                  height="315"
+                  th:attr="src='https://www.youtube.com/embed/' + ${urlTrailerID}"
+                ></iframe>
+              </div>
+              <p class="item-description" th:text="${description}"></p>
+              <p class="item-price" th:text="'$' + ${price}"></p>
+              <p class="item-quantity" th:text="${quantity} + ' available'"></p>
+            </div>
+            <div id="previewButtons">
+              <button onclick="showImage()">Show Item</button>
+              <button onclick="showVideo()">Show Trailer</button>
+            </div>
           </div>
+
           <div class="right">
             <form action="/saveOurInvoice" method="post" class="checkout-form">
               <div class="billing-info">
@@ -132,7 +152,7 @@
         </div>
       </section>
     </main>
-    <script src="checkoutScript.js"></script>
+    <script src="/CheckoutPage/checkoutScript.js"></script>
   </body>
   <footer class="footer">
     <div class="footer__logo-box">

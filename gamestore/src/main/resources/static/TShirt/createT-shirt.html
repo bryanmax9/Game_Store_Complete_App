@@ -46,19 +46,22 @@
           class="create-t-shirt-form"
         >
           <label for="model">Size:</label>
-          <input type="text" id="size" name="size" required />
+          <input type="text" id="size" name="size" maxlength="20" required />
 
           <label for="color">Color:</label>
-          <input type="text" id="color" name="color" required />
+          <input type="text" id="color" name="color" maxlength="20" required />
 
           <label for="description">Description:</label>
-          <textarea id="description" name="description" required></textarea>
+          <textarea id="description" name="description" maxlength="255" required></textarea>
 
           <label for="price">Price:</label>
           <input type="number" id="price" name="price" step="0.01" required />
 
           <label for="quantity">Quantity:</label>
           <input type="number" id="quantity" name="quantity" required />
+
+          <label for="youtubeId">YouTube Video ID:</label>
+          <input type="text" id="youtubeId" name="youtubeId" required />
 
           <button type="submit">Create Console</button>
         </form>

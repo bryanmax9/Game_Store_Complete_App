@@ -46,25 +46,28 @@
           class="create-game-form"
         >
           <label for="title">Title:</label>
-          <input type="text" id="title" name="title" required />
+          <input type="text" id="title" name="title" maxlength="50" required />
 
           <label for="esrbRating">ESRB Rating:</label>
-          <input type="text" id="esrbRating" name="esrbRating" required />
+          <input type="text" id="esrbRating" name="esrbRating" maxlength="50" required />
 
           <label for="description">Description:</label>
-          <textarea id="description" name="description" required></textarea>
+          <textarea id="description" name="description" maxlength="255" required></textarea>
 
           <label for="price">Price:</label>
           <input type="number" id="price" name="price" step="0.01" required />
 
           <label for="studio">Studio:</label>
-          <input type="text" id="studio" name="studio" required />
+          <input type="text" id="studio" name="studio" maxlength="50" required />
 
           <label for="quantity">Quantity:</label>
           <input type="number" id="quantity" name="quantity" required />
 
           <label for="imageUrl">Image URL:</label>
           <input type="url" id="imageUrl" name="imageUrl" required />
+
+          <label for="youtubeId">YouTube Video ID:</label>
+          <input type="text" id="youtubeId" name="youtubeId" required />
 
           <button type="submit">Create Game</button>
         </form>
