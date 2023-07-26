@@ -230,7 +230,7 @@ body {
 }
 .game-item img {
   width: 230px;
-  height: 290px;
+  height: 210px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -401,7 +401,7 @@ button.checkout-button:hover {
 
 .console-item img {
   width: 230px;
-  height: 290px;
+  height: 210px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -434,7 +434,7 @@ button.checkout-button:hover {
 
 .tshirt-item img {
   width: 230px;
-  height: 290px;
+  height: 210px;
   border-radius: 5px;
   margin-bottom: 10px;
 }

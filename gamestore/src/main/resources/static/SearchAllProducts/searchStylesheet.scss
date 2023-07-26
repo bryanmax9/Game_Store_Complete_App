@@ -275,10 +275,10 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   text-align: center;
   transition: 0.3s ease-in-out;
-  
+
   img {
     width: 230px;
-    height: 290px;
+    height: 210px;
     border-radius: 5px;
     margin-bottom: 10px;
   }
@@ -293,7 +293,7 @@ body {
   }
 }
 
-.game-item:hover{
+.game-item:hover {
   border-radius: 10px;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 2);
   transform: translateY(-2%);
@@ -484,7 +484,7 @@ button.checkout-button:hover {
 
 .console-item img {
   width: 230px;
-  height: 290px;
+  height: 210px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -497,7 +497,7 @@ button.checkout-button:hover {
 .console-item p {
   font-size: 14px;
 }
-.console-item:hover{
+.console-item:hover {
   border-radius: 10px;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 2);
   transform: translateY(-2%);
@@ -517,7 +517,7 @@ button.checkout-button:hover {
 
 .tshirt-item img {
   width: 230px;
-  height: 290px;
+  height: 210px;
   border-radius: 5px;
   margin-bottom: 10px;
 }
@@ -530,7 +530,7 @@ button.checkout-button:hover {
 .tshirt-item p {
   font-size: 14px;
 }
-.tshirt-item:hover{
+.tshirt-item:hover {
   border-radius: 10px;
   box-shadow: 0 6px 6px rgba(0, 0, 0, 2);
   transform: translateY(-2%);

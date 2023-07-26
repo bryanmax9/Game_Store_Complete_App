@@ -124,8 +124,6 @@ public class ServiceLayer {
     // INVOICE API
     //
 
-
-
     @Transactional
     public InvoiceViewModel saveInvoice(InvoiceViewModel viewModel){
         //We are given by the user this:
@@ -433,6 +431,7 @@ public class ServiceLayer {
         System.out.println("Hello CI CD");
         return viewModel;
     }
+
 
     public Invoice findInvoice(int id){
         Optional<Invoice> invoice = invoiceRepository.findById(id);
