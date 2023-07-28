@@ -221,15 +221,15 @@ header.scrolled {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 .card .backGameCard {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://i.imgur.com/Yd66dSS.jpeg") center no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../Images/Admin Games.png") center no-repeat;
   background-size: cover;
 }
 .card .backConsoleCard {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://i.imgur.com/YKsA9yc.jpeg") center no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../Images/Futuristic Games Pile.png") center no-repeat;
   background-size: cover;
 }
 .card .backTshirtCard {
-  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("https://i.imgur.com/3ofxZDY.jpeg") center no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../Images/Futuristic T-shirts.png") center no-repeat;
   background-size: cover;
 }
 .card__back {

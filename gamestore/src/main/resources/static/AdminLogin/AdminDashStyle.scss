@@ -271,53 +271,49 @@ $black-color: #000;
     transition: transform 0.7s ease-in-out;
     backface-visibility: hidden;
     border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   }
-  .backGameCard{
-    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("https://i.imgur.com/Yd66dSS.jpeg") center no-repeat;
+  .backGameCard {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url("../Images/Admin Games.png") center no-repeat;
     background-size: cover;
   }
-  .backConsoleCard{
-    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url("https://i.imgur.com/YKsA9yc.jpeg") center no-repeat;
+  .backConsoleCard {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url("../Images/Futuristic Games Pile.png") center no-repeat;
     background-size: cover;
   }
-  .backTshirtCard{
-    background: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4          )), url("https://i.imgur.com/3ofxZDY.jpeg") center no-repeat;
+  .backTshirtCard {
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+      url("../Images/Futuristic T-shirts.png") center no-repeat;
     background-size: cover;
   }
 
   &__back {
-    
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 
-    & > a{
-      
+    & > a {
       display: flex;
       text-align: center;
       justify-content: center;
       align-items: center;
       top: 0;
       left: 0;
-      width: 100%;// a tag fill all the container width
-      height: 100%;// a tag fill all the container height
-      
-      strong{
+      width: 100%; // a tag fill all the container width
+      height: 100%; // a tag fill all the container height
+
+      strong {
         display: flex;
         justify-content: center;
         align-items: center;
         text-shadow: 0px 0px 4px #000000;
       }
-      
     }
-
   }
 
- 
-  
-  
   &__front {
     background-color: $primary-color;
     color: $black-color;

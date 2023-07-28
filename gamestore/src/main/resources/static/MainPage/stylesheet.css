@@ -271,17 +271,19 @@ header.scrolled {
   align-items: center;
   border: none;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 80px;
   transition: all 0.3s;
 }
 .brand-box img {
   max-width: 100%;
   height: auto;
+  border-radius: 80px;
 }
 
 .brand-box:hover {
   transform: translateY(-10px);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 80px;
 }
 
 .ad-section {
@@ -315,6 +317,22 @@ header.scrolled {
 }
 .ad-section .ad-text p {
   font-size: 1.5em;
+}
+
+a {
+  text-decoration: none;
+}
+
+.game_title_URL h2 {
+  text-decoration: none;
+  color: white;
+  transition: border-color 0.2s;
+  display: inline;
+}
+
+.game_title_URL:hover h2 {
+  text-decoration: underline;
+  text-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
 }
 
 .carousel-section {
@@ -771,9 +789,6 @@ header.scrolled {
     margin: 50px auto;
     padding: 50px 20px;
   }
-  .carousel-section {
-    margin: 50px 0;
-  }
   .swiper-container {
     width: 100%;
     height: 50vw;
@@ -928,6 +943,7 @@ header.scrolled {
     transform: translate(-50%, -50%);
     text-align: center;
     color: #fff;
+    text-shadow: 0 6px 12px rgba(0, 0, 0, 0.8);
   }
   .ad-section .ad-text h3 {
     font-size: 2.5em;
@@ -1031,6 +1047,8 @@ header.scrolled {
     width: 15rem;
     height: auto;
   }
+}
+@media only screen and (min-width: 1200px) {
   .footer__navigation {
     border-top: 1px solid #faf0e6;
     padding-top: 2rem;
@@ -1047,12 +1065,16 @@ header.scrolled {
   .footer__list {
     list-style: none;
   }
+}
+@media only screen and (min-width: 1200px) {
   .footer__item {
     display: inline-block;
   }
   .footer__item:not(:last-child) {
     margin-right: 1.5rem;
   }
+}
+@media only screen and (min-width: 1200px) {
   .footer__link:link, .footer__link:visited {
     color: black;
     background-color: #ff5733;
@@ -1066,6 +1088,8 @@ header.scrolled {
     box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.4);
     transform: rotate(5deg) scale(1.3);
   }
+}
+@media only screen and (min-width: 1200px) {
   .footer__copyright {
     border-top: 1px solid #1c3a63;
     padding-top: 2rem;

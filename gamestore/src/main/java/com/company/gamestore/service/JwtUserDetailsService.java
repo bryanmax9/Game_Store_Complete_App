@@ -26,3 +26,5 @@ public class JwtUserDetailsService implements UserDetailsService {
         }
     }
 }
+
+// $2a$10$6EM7hkQviSJZmbvgfJnhSeev9o9fqpOZ8Tme.q3TMk6epS9V8v4ra
