@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -236,10 +237,24 @@ public class WebController {
         modelAndView.addObject("invoice",invoiceViewModel);
         return modelAndView;
     }
+    // Function, will help us for searching at all costs! :)
+    private static boolean subSequence(String query, String name){
+        int j = 0;
 
-//    Searching for specific items
-@GetMapping("/search")
-public String returnSearch(@RequestParam(name="q", required=false, defaultValue="") String query, Model model) {
+        for(int i = 0; i < name.length() && j < query.length(); i++){
+
+            if(query.charAt(j) == name.charAt(i)){
+                j++;
+            }
+        }
+        // Will return true/false depending on if we found all characters of query inside name (a.k.a item)
+        boolean answer = j == query.length();
+        return answer;
+    }
+
+    //Searching for specific items
+    @GetMapping("/search")
+    public String returnSearch(@RequestParam(name="q", required=false, defaultValue="") String query, Model model) {
     // Check if the query is empty
     if (query == null || query.isEmpty()) {
         //If the query is empty, then we will show to the user all items that we have
@@ -289,7 +304,6 @@ public String returnSearch(@RequestParam(name="q", required=false, defaultValue=
             .collect(Collectors.toList());
 
 
-
     // Merge exact and broad matches, removing duplicates
     List<Game> games = Stream.concat(gamesExact.stream(), gamesBroad.stream())
             .distinct()
@@ -302,6 +316,23 @@ public String returnSearch(@RequestParam(name="q", required=false, defaultValue=
     List<Tshirt> tshirts = Stream.concat(tshirtsExact.stream(), tshirtsBroad.stream())
             .distinct()
             .collect(Collectors.toList());
+
+    // If no item was found, return some potential items
+
+    if(games.isEmpty() && consoles.isEmpty() && tshirts.isEmpty()){
+        List<Game> gamesBroader = allGames.stream().filter(game -> subSequence(query.toLowerCase(), game.getTitle().toLowerCase())).collect(Collectors.toList());
+        List<Console> consolesBroader = allConsoles.stream().filter(console -> subSequence(query.toLowerCase(), console.getModel().toLowerCase())).collect(Collectors.toList());
+        List<Tshirt> tshirtsBroader = allTshirts.stream().filter(tshirt -> subSequence(query.toLowerCase(), tshirt.getColor().toLowerCase())).collect(Collectors.toList());
+
+        games = gamesBroader;
+        consoles = consolesBroader;
+        tshirts = tshirtsBroader;
+    }
+
+
+
+
+
 
     // Add the items to the model
     model.addAttribute("games", games);
