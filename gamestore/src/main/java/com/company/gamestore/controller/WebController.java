@@ -55,6 +55,7 @@ public class WebController {
         String description = ""; //Hold description
         BigDecimal price = BigDecimal.ZERO;
         String urlTrailerID = "";
+
         switch (type) {
             case "game":
                 Game game = serviceLayer.findGame(id);
@@ -102,6 +103,7 @@ public class WebController {
         model.addAttribute("description", description);
         model.addAttribute("price", price);
         model.addAttribute("urlTrailerID", urlTrailerID);
+
 
         System.out.println(model);
 
