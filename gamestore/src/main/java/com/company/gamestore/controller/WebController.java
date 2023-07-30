@@ -265,15 +265,24 @@ public class WebController {
     // if matches a game title
     // if matches console manufacturer
     // if matches a color or a size of a t-shirt
-    List<Game> gamesExact = serviceLayer.getAllGamesByTitle(query);
+    List<Game> gamesTitleExact = serviceLayer.getAllGamesByTitle(query);
+    List<Game> gamesStudioExact = serviceLayer.getAllGamesByStudio(query);
     List<Console> consolesExact = serviceLayer.getAllConsolesByManufacturer(query);
     List<Tshirt> tshirtsByColorExact = serviceLayer.getAllTshirtsByColor(query);
     List<Tshirt> tshirtsBySizeExact = serviceLayer.getAllTshirtBySize(query);
 
     // Combine the two lists into one and removing repeating elements using "distinct", removing duplicates. Then we collect all into a list using "collect"
+    List<Game> gamesExact = Stream.concat(gamesTitleExact.stream(), gamesStudioExact.stream())
+            .distinct()
+            .collect(Collectors.toList());
+
+    // Combine the two lists into one and removing repeating elements using "distinct", removing duplicates. Then we collect all into a list using "collect"
     List<Tshirt> tshirtsExact = Stream.concat(tshirtsByColorExact.stream(), tshirtsBySizeExact.stream())
             .distinct()
             .collect(Collectors.toList());
+
+
+
 
 
     //If for some reason what the user wrote doesn't match exactly
@@ -289,9 +298,18 @@ public class WebController {
 
     //Now, we will filter depending on the search of the user
     //For games if the game title contains the word written by the user in the search bar
-    List<Game> gamesBroad = allGames.stream()
+    List<Game> gamesTitleBroad = allGames.stream()
             .filter(game -> game.getTitle().toLowerCase().contains(query.toLowerCase()))
             .collect(Collectors.toList());
+    // WE also want to allow the user to search for Game Brands if the search contains a brand word
+    List<Game> gamesStudioBroad = allGames.stream()
+            .filter(game -> game.getStudio().toLowerCase().contains(query.toLowerCase()))
+            .collect(Collectors.toList());
+
+    List<Game> gamesBroad = Stream.concat(gamesTitleBroad.stream(), gamesStudioBroad.stream())
+            .distinct()
+            .collect(Collectors.toList());
+
 
     //For the consoles, if a console model contains a word wrote by the user in the search bar
     List<Console> consolesBroad = allConsoles.stream()
@@ -302,6 +320,9 @@ public class WebController {
     List<Tshirt> tshirtsBroad = allTshirts.stream()
             .filter(tshirt -> tshirt.getColor().toLowerCase().equals(query.toLowerCase()))
             .collect(Collectors.toList());
+
+
+
 
 
     // Merge exact and broad matches, removing duplicates
@@ -328,23 +349,22 @@ public class WebController {
         consoles = consolesBroader;
         tshirts = tshirtsBroader;
     }
+    // If any item was found, we will return them
+    if(!games.isEmpty() || !consoles.isEmpty() || !tshirts.isEmpty()){
 
+        // Add the items to the model
+        model.addAttribute("games", games);
+        model.addAttribute("consoles", consoles);
+        model.addAttribute("tshirts", tshirts);
 
+        return "/SearchAllProducts/search";
+    }
 
-
-
-
-    // Add the items to the model
-    model.addAttribute("games", games);
-    model.addAttribute("consoles", consoles);
-    model.addAttribute("tshirts", tshirts);
-
-    // Return the search page
-    return "/SearchAllProducts/search";
+    // Return the "Not found" page if no item is going to be returned
+    return "/ItemsNotFound/notfound";
 }
 
-
-    //    Search for all itams (consoles, games, t-shirts)
+    //    Search for all items (consoles, games, t-shirts)
     @GetMapping("/searchAll")
     public String returnSearchAll(Model model){
         List<Console> consoles = serviceLayer.getAllConsoles();

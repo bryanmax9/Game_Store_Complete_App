@@ -93,11 +93,50 @@ header.scrolled {
   outline: none; /* Optional: remove the default browser outline */
 }
 
-.container {
-  width: 100%;
-  max-width: 1700px; /* Increase max-width for larger screens */
-  margin: 50px auto;
-  padding: 50px 20px;
+@keyframes jumpImage {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes jumpText {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.no-search-results {
+  max-width: 1200px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.no-search-results h2 {
+  font-size: 24px;
+  margin-bottom: 80px;
+  justify-content: center;
+  text-align: center;
+  animation: jumpText 3s infinite;
+}
+
+.not_found_image {
+  height: 350px;
+  width: 350px;
+  margin-bottom: 1rem;
+  animation: jumpImage 3s infinite;
 }
 
 /* Add media queries for responsiveness */
@@ -201,15 +240,15 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.search-results {
+.no-search-results {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   color: white;
 }
-.search-results h2 {
+.no-search-results h2 {
   font-size: 24px;
-  margin-bottom: 20px;
+  margin-bottom: 80px;
 }
 
 /* Extra small devices (phones, 600px and down) */

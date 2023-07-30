@@ -117,15 +117,52 @@ header.scrolled {
   outline: none; /* Optional: remove the default browser outline */
 }
 
-//Now After finishing the header of the website
-//We need to create a container style in order for  each section be positioned correctly in the page
+@keyframes jumpImage {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 
-//In order to make predetermined size of the section for each section in this page we are going tto create  a standard sttyle for each section in the website.
-.container {
-  width: 100%;
-  max-width: 1700px; /* Increase max-width for larger screens */
-  margin: 50px auto;
-  padding: 50px 20px;
+@keyframes jumpText {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.no-search-results {
+  max-width: 1200px;
+  padding: 20px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h2 {
+    font-size: 24px;
+    margin-bottom: 80px;
+    justify-content: center;
+    text-align: center;
+    animation: jumpText 3s infinite;
+  }
+}
+
+.not_found_image {
+  height: 350px;
+  width: 350px;
+  margin-bottom: 1rem;
+  animation: jumpImage 3s infinite;
 }
 
 /* Add media queries for responsiveness */
@@ -248,7 +285,7 @@ body {
   font-family: Arial, sans-serif;
 }
 
-.search-results {
+.no-search-results {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -256,7 +293,7 @@ body {
 
   h2 {
     font-size: 24px;
-    margin-bottom: 20px;
+    margin-bottom: 80px;
   }
 }
 

@@ -1,74 +1,77 @@
 <html xmlns:th="https://thymeleaf.org">
-<head>
-    <link rel="icon" href="https://i.imgur.com/QxckFLG.png">
+  <head>
+    <link rel="icon" href="./Images/GamerWorm-removebg-preview.png" />
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-        }
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+      }
 
-        table {
-            width: 80%;
-            margin: 20px auto;
-            border-collapse: collapse;
-        }
+      table {
+        width: 80%;
+        margin: 20px auto;
+        border-collapse: collapse;
+      }
 
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-        }
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
 
-        th {
-            background-color: #333;
-            color: white;
-        }
+      th {
+        background-color: #333;
+        color: white;
+      }
 
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
 
-        .custom-button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            border-radius: 4px;
-        }
+      .custom-button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 4px;
+      }
 
-        .button-container {
-            text-align: center;
-            margin: 20px;
-        }
+      .button-container {
+        text-align: center;
+        margin: 20px;
+      }
     </style>
-</head>
-<body>
-<table>
-    <tr>
+  </head>
+  <body>
+    <table>
+      <tr>
         <th>Game ID</th>
         <th>Game Name</th>
         <th>Game Description</th>
-    </tr>
-    <tr>
+      </tr>
+      <tr>
         <td th:text="${game.gameId}"></td>
         <td th:text="${game.title}"></td>
         <td th:text="${game.description}"></td>
-    </tr>
-</table>
-<div class="button-container">
-    <button class="custom-button"><a href="/">Return Main Page</a></button>
-    <button class="custom-button"><a href="/admin/dashboard">Return Admin Dashboard</a></button>
-    <button class="custom-button"><a href="/createGame">Return Create Game</a></button>
-</div>
-</body>
+      </tr>
+    </table>
+    <div class="button-container">
+      <button class="custom-button"><a href="/">Return Main Page</a></button>
+      <button class="custom-button">
+        <a href="/admin/dashboard">Return Admin Dashboard</a>
+      </button>
+      <button class="custom-button">
+        <a href="/createGame">Return Create Game</a>
+      </button>
+    </div>
+  </body>
 </html>
-
-

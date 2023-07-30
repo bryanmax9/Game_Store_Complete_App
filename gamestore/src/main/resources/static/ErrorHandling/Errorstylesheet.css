@@ -7,22 +7,35 @@ body {
   background: linear-gradient(#1c3a63, #ff7f3f);
 }
 
+@keyframes jumpImage {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
 .container {
   background-color: #fff;
   padding: 30px;
   border-radius: 8px;
   box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
   text-align: center;
+  animation: jumpImage 3s infinite;
 }
 
 .logo {
-  margin-bottom: 20px;
+  animation: jumpImage 3s infinite;
 }
 
 h1 {
   font-size: 28px;
   margin-bottom: 10px;
   color: #333;
+  animation: jumpImage 3s infinite;
 }
 
 .error-message {
@@ -39,6 +52,7 @@ h1 {
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s ease;
+  animation: jumpImage 3s infinite;
 }
 
 .home-link:hover {
