@@ -8,14 +8,29 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 import org.webjars.NotFoundException;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@RestControllerAdvice
+@ControllerAdvice
 public class ControllerExceptionHandler {
+
+    @ExceptionHandler(value = Exception.class)
+    public ModelAndView handleException(Exception e) {
+        ModelAndView modelAndView = new ModelAndView();
+
+        // Set the view name of the error page
+        modelAndView.setViewName("ErrorHandling/error");
+
+        // Add error message to the model
+        String errorMsg = "An error occurred: " + e.getMessage();
+        modelAndView.addObject("errorMsg", errorMsg);
+
+        return modelAndView;
+    }
 
     @ExceptionHandler(value = {MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.UNPROCESSABLE_ENTITY)
