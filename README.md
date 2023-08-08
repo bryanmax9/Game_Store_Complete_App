@@ -3,7 +3,7 @@
 # GAME STORE COMPLETE APP
 Explore our front-end application for the Game Store API. Features include easy navigation, checkout, addition of new items, and display of all items. Striving for a user-friendly experience, high performance, and secure transactions."
 
-# Video
+# VIDEO
 Link: https://youtu.be/S8sTx3MYlfk
 
 # SETUP (Run application)
