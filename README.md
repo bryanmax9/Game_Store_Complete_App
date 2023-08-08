@@ -6,6 +6,10 @@ Explore our front-end application for the Game Store API. Features include easy 
 # VIDEO
 Link: https://youtu.be/S8sTx3MYlfk
 
+# Contributors
+Jessie Estrada & Bryan Tineo 
+
+
 # SETUP (Run application)
 
 * git clone git@github.com:bryanmax9/Game_Store_Complete_App.git
